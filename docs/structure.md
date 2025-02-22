@@ -1,6 +1,6 @@
-## Estructura del Proyecto
+# Project Structure
 
-```
+```plaintext
 ├───.vscode/
 │   ├───extensions.json
 │   ├───launch.json

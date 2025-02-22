@@ -17,7 +17,7 @@
 		"preview": "astro preview",
 		"check": "astro check && biome check --write .",
 		"astro": "astro",
-		"structure": "npx --yes tree-extended -max=5 -max-show-not-empty -gitignore > docs/structure.md && echo '```' >> docs/structure.md && cat docs/structure.md | sed -i '' -e '1i\\\n```' docs/structure.md && echo '## Estructura del Proyecto\n' | cat - docs/structure.md > temp && mv temp docs/structure.md"
+		"structure": "npx --yes tree-extended -max=5 -max-show-not-empty -gitignore > docs/structure.md && echo '```' >> docs/structure.md && cat docs/structure.md | sed -i '' -e '1i\\\n```plaintext' docs/structure.md && echo '# Project Structure\n' | cat - docs/structure.md > temp && mv temp docs/structure.md"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
