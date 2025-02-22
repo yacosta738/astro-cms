@@ -1,6 +1,6 @@
 // locales settings for this theme
 // Set the languages you want to support on your site.
-// https://astro-i18n-starter.pages.dev/setup/
+// https://astro-cms-dpv.pages.dev/setup/
 
 export const DEFAULT_LOCALE_SETTING: string = "en";
 
@@ -16,6 +16,9 @@ export const LOCALES_SETTING: LocaleSetting = {
 	en: {
 		label: "English",
 		lang: "en-US",
+	},
+	es: {
+		label: "Español",
 	},
 	ja: {
 		label: "日本語",

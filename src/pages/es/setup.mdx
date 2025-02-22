@@ -1,0 +1,130 @@
+---
+layout: "@/layouts/Article.astro"
+title: "Configuración"
+description: "Sobre el proceso de configuración"
+---
+import PageHeadline from "@/components/PageHeadline.astro";
+import { SITE_TITLE } from "@/consts";
+
+<PageHeadline title={frontmatter.title} />
+
+
+
+## Creación del Proyecto
+
+```sh
+npm create astro@latest -- --template yacosta738/astro-cms
+```
+
+
+
+## Configuración
+
+### 1. Configurar /src/locales.ts
+
+Primero, actualiza el archivo de configuración de idiomas.
+
+Establece el idioma predeterminado en `DEFAULT_LOCALE_SETTING` y la lista de idiomas deseados en `LOCALES_SETTING`. Esto sigue la [configuración de Starlight](https://starlight.astro.build/reference/configuration/#locales).
+
+```ts
+// Set your site's default locale.
+export const DEFAULT_LOCALE_SETTING: string = "en";
+
+export const LOCALES_SETTING: LocaleSetting = {
+    // Añade o elimina los idiomas soportados.
+	en: {
+		label: "English",
+		lang: "en-US", // opcional
+	},
+	ja: {
+		label: "日本語",
+	},
+	"zh-cn": {
+		label: "简体中文",
+		lang: "zh-CN",
+	},
+	ar: {
+		label: "العربية",
+		dir: "rtl", // opcional
+	},
+};
+```
+
+Consulta el siguiente enlace para obtener información sobre los códigos de idioma.
+
+> [lang - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/es/docs/Web/HTML/Global_attributes/lang)
+
+### 2. Configurar astro.config.mjs
+
+Establece tu URL en `site`.
+
+```diff
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
+import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from './src/locales';
+
+export default defineConfig({
+- site: 'https://astro-cms-dpv.pages.dev',
++ site: 'https://tu-sitio.com',
+  i18n: {
+    defaultLocale: DEFAULT_LOCALE_SETTING,
+    locales: Object.keys(LOCALES_SETTING),
+    routing: {
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
+    },
+  },
+...
+```
+
+Consulta la documentación oficial para ver las opciones detalladas de configuración de Astro.
+
+* [Referencia de Configuración | Documentación](https://docs.astro.build/es/reference/configuration-reference/)
+* [Enrutamiento Internacional (i18n) | Documentación](https://docs.astro.build/es/guides/internationalization/#configure-i18n-routing)
+
+nota: No se recomienda cambiar la configuración de `prefixDefaultLocale` y `redirectToDefaultLocale`. { SITE_TITLE } gestiona el proceso de redirección con JavaScript del lado del cliente. Si la URL no contiene un idioma, se redirigirá al idioma predeterminado. Por ejemplo, `/setup/` se redirigirá a `/en/setup/`.
+
+
+
+## Estructura del Proyecto
+
+Sigue la [estructura de proyecto de Astro](https://docs.astro.build/es/basics/project-structure/).
+
+```text
+src/
+├── assets/
+│   └── en/, ja/ ...
+├── blog/
+│   └── en/, ja/ ...
+├── components/
+│   └── i18n/
+├── layouts/
+├── pages/
+│   ├── [lang]/
+│   ├── en/, ja/ ...
+│   ├── 404.astro
+│   └── index.astro
+├── styles/
+├── content.config.ts
+├── consts.ts
+├── i18n.ts
+└── locales.ts
+```
+
+### src/components/i18n
+
+Directorio para componentes de UI utilizados en sitios web multilingües.
+
+### src/pages
+
+- Los archivos bajo `src/pages/[lang]/` generan archivos HTML para cada idioma dinámicamente desde un único archivo `.astro`.
+- También puedes generar archivos HTML para cada idioma desde carpetas como `src/pages/en/`, `src/pages/ja/`, etc.
+
+### src/consts.ts
+
+Archivo para datos constantes que pueden ser importados y utilizados dentro del proyecto. Se puede omitir si no es necesario.
+
+### src/i18n.ts
+
+Archivo que contiene definiciones de funciones utilizadas en { SITE_TITLE }. Generalmente no hay necesidad de editar este archivo.

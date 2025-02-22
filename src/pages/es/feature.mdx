@@ -1,0 +1,144 @@
+---
+layout: "@/layouts/Article.astro"
+title: "Otras Funciones"
+description: "Este artículo explica otras funciones disponibles en el Tema Astro i18n."
+---
+import PageHeadline from "@/components/PageHeadline.astro";
+import { SITE_TITLE } from "@/consts";
+
+<PageHeadline title={frontmatter.title} />
+
+
+
+## Componentes
+
+Dentro de `src/components/i18n/`, encontrarás varios componentes UI que son útiles para generar sitios multilingües. Siéntete libre de personalizar su contenido e importarlos según sea necesario.
+
+### LocaleSelect.astro
+Una interfaz de selección para cambiar entre idiomas.
+
+### LocaleSelectSingle.astro
+Una interfaz de enlace a otro idioma. Úsalo cuando solo soportes dos idiomas.
+
+### LocalesHomeList.astro
+Devuelve una lista de enlaces a las páginas principales de cada idioma, envueltos en etiquetas `<li>`.
+
+### LocaleSuggest.astro
+Muestra una interfaz en la parte superior sugiriendo un enlace al idioma del navegador cuando el usuario accede a una URL diferente al idioma de su navegador.
+
+Por ejemplo, si un usuario con configuración en inglés accede a la URL `/ja/[slug]`, sugiere un enlace a `/en/[slug]`.
+
+Una vez cerrado, la configuración se guarda en localhost y no se mostrará nuevamente.
+
+### LocaleHtmlHead.astro
+Permite especificar configuraciones de etiqueta `<head>` para cada idioma. El código de ejemplo carga la [Noto Font](https://fonts.google.com/noto/) para cada idioma y aplica el CSS.
+
+### NotTranslateCaution.astro
+Muestra una advertencia al usuario cuando una página específica solo está disponible en cierto idioma.
+
+La página de ejemplo es [Monolingual](/monolingual/). Cuando esta página se ve en un idioma que no sea inglés, muestra una interfaz de advertencia al usuario.
+
+El texto para la interfaz de advertencia se configura en `/src/const.ts` en el código de ejemplo.
+
+
+## 404
+
+La página 404 de { SITE_TITLE } consiste en dos archivos. Si deseas personalizar el diseño de la página 404, generalmente solo necesitas editar `src/pages/[lang]/404.astro`.
+
+### src/pages/404.astro
+
+Este archivo genera lo siguiente:
+
+> /404.html
+
+La mayoría de los servicios de despliegue encontrarán y usarán este archivo cuando no se encuentre una página.
+
+Cuando se accede con { SITE_TITLE }, redirige a la siguiente página 404 basada en el idioma del sistema del usuario:
+
+<details>
+    <summary>Condiciones Detalladas de Redirección</summary>
+    La redirección se realiza según las siguientes condiciones. Para más detalles, consulta el [código fuente](https://github.com/yacosta738/astro-cms/blob/main/src/pages/404.astro#L25).
+
+    1. Si la URL contiene `/es/...` o cualquier otro código de idioma.
+    2. Si `localStorage.selectedLang` contiene el código del idioma.
+        * El `localStorage.selectedLang` se guarda cuando el usuario selecciona un idioma en la interfaz.
+    3. Si la página de referencia contiene `/es/...` o cualquier otro código de idioma.
+</details>
+
+### src/pages/[lang]/404.astro
+
+Este archivo genera dinámicamente lo siguiente:
+
+> * /es/404/index.html
+> * /en/404/index.html
+> * ...
+
+En realidad, mediante el proceso `history.replaceState()` muestra en el navegador la URL a la que el usuario accedió antes de la redirección.
+
+
+## Consejos de CSS
+
+### Separando CSS para cada idioma
+
+Puedes separar las definiciones usando solo CSS escribiendo de la siguiente manera:
+
+:lang(es) {
+    /* Estilos para Español */
+}
+:lang(ar) {
+    /* Estilos para Árabe */
+}
+
+Sin embargo, en este caso, todo el CSS de los idiomas se cargará simultáneamente, resultando en un desperdicio de recursos.
+
+Si estás escribiendo dentro de archivos `.astro`, considera escribir de la siguiente manera o separar las definiciones dentro de [LocaleHtmlHead.astro](#localehtmlheadastro).
+
+
+```astro
+---
+import { type Lang } from "@/i18n";
+const locale = Astro.currentLocale as Lang;
+---
+
+{
+    locale === "es" ? (
+        <style>
+            /* Estilos para Español */
+        </style>
+    )
+    : locale === "ar" ? (
+        <style>
+             /* Estilos para Árabe */
+        </style>
+    )
+    : null
+}
+```
+
+
+### Espaciado entre letras para Árabe
+
+En algunos diseños, es posible que desees ajustar el espaciado entre letras para títulos y otros elementos. Sin embargo, es importante no añadir espaciado para el texto en árabe.
+
+> [Estilizado de derecha a izquierda](https://rtlstyling.com/posts/rtl-styling#1.-letter-spacing)
+
+Por lo tanto, ten en cuenta que { SITE_TITLE } define lo siguiente en `src/styles/base.css`:
+
+
+
+### Iconos RTL
+
+En idiomas RTL (de derecha a izquierda), los iconos como las flechas necesitan ser reflejados.
+
+> [Derecha a izquierda | Documentación de Apple Developer](https://developer.apple.com/design/human-interface-guidelines/right-to-left#Interface-icons)
+
+{ SITE_TITLE } usa [Material Icon](https://fonts.google.com/icons), y lo siguiente está definido en `src/styles/base.css`:
+
+
+```html
+<span class="material-icons-sharp dir">arrow_forward</span>
+```
+
+Visualización actual:
+<span class="material-icons-sharp dir">arrow_forward</span>
+<span class="material-icons-sharp dir">open_in_new</span>

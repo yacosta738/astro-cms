@@ -1,10 +1,10 @@
 # Astro i18n Starter
 
 ```sh
-npm create astro@latest -- --template psephopaiktes/astro-i18n-starter
+npm create astro@latest -- --template yacosta738/astro-cms
 ```
 
-[![Logo Image](docs/hero.svg)](https://astro-i18n-starter.pages.dev/ "See document")
+[![Logo Image](docs/hero.svg)](https://astro-cms-dpv.pages.dev/ "See document")
 
 i18n Starter is a simple [Astro](https://astro.build) theme for creating multilingual websites.
 
@@ -15,7 +15,6 @@ It only supports the subdirectory URL format. Each language is managed with a UR
 - example.com/en/
 - example.com/ja/
 
-
 ## Features
 
 - [x] Support for Astro's official i18n functionality
@@ -23,11 +22,9 @@ It only supports the subdirectory URL format. Each language is managed with a UR
 - [x] Vanilla CSS
 - [x] SEO-friendly
 
-
 ## Lighthouse Score
 
 [![All scores are 100.](docs/lighthouse.png)](https://pagespeed.web.dev/analysis/https-astro-i18n-starter-pages-dev-en/8sg3q21r6c?form_factor=desktop "Check score")
-
 
 ## Documentation
 
@@ -35,4 +32,4 @@ This theme is self-documented, and the pages within this theme can be considered
 
 Install and preview locally or check out the sample site below.
 
-https://astro-i18n-starter.pages.dev/
+<https://astro-cms-dpv.pages.dev/>

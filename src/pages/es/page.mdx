@@ -1,0 +1,111 @@
+---
+layout: "@/layouts/Article.astro"
+title: "Agregar Páginas"
+description: "Sobre cómo agregar y gestionar páginas multilingües"
+---
+import PageHeadline from "@/components/PageHeadline.astro";
+import { SITE_TITLE } from "@/consts";
+
+<PageHeadline title={frontmatter.title} />
+
+Hay varias formas de crear páginas multilingües con { SITE_TITLE }.
+
+
+
+## Si deseas separar archivos por idioma
+
+Crea carpetas para cada idioma dentro de `pages` y agrega archivos en formato Astro o Markdown.
+
+```text
+src/pages
+├── en/
+│   ├── page-1.astro
+│   └── page-2.mdx
+└── ja/
+  ├── page-1.astro
+  └── page-2.mdx
+```
+
+Se generarán las siguientes páginas:
+
+* /en/page-1/index.html
+* /en/page-2/index.html
+* /ja/page-1/index.html
+* /ja/page-2/index.html
+
+
+
+## Si deseas gestionar en un solo archivo
+
+Si la cantidad de texto en la página no es demasiado grande, puedes usar la función de [rutas dinámicas de Astro](https://docs.astro.build/en/guides/routing/#dynamic-routes) para generar dinámicamente páginas para cada idioma desde un solo archivo.
+
+```text
+src/pages
+└── [lang]/
+    ├── page-1.astro
+    └── page-2.astro
+```
+
+Importa el objeto `LOCALES` en el archivo y genera rutas dinámicas usando la función `getStaticPaths()` de Astro.
+
+```astro
+---
+import { LOCALES } from "@/i18n";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+```
+
+Se generarán las siguientes páginas:
+
+* /en/page-1/index.html
+* /en/page-2/index.html
+* /ja/page-1/index.html
+* /ja/page-2/index.html
+
+
+
+## Si deseas usar Content Collection
+
+Si deseas gestionar páginas como blogs o noticias en archivos Markdown, puedes usar la función de colección de contenido de Astro.
+
+#### Estructura de directorios
+
+```text
+src/
+├── content.config.ts
+├── blog/
+│   ├── en/
+│   │   ├── first-post.md
+│   │   └── second-post.md
+│   └── ja/
+│        ├── first-post.md
+│        └── second-post.md
+└── pages/[lang]/blog/
+  ├── index.astro
+  └── [...id].astro
+```
+
+#### pages/[lang]/blog/[...id].astro
+
+```astro
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    const [lang, ...id] = post.id.split("/");
+    return { params: { lang, id: id.join("/") || undefined }, props: post };
+  });
+}
+---
+```
+
+Para más detalles, consulta la documentación de Astro.
+
+> [Colecciones de Contenido | Documentación](https://docs.astro.build/es/guides/content-collections/)

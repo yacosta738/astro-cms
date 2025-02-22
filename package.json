@@ -4,7 +4,7 @@
 	"version": "3.0.0",
 	"private": false,
 	"license": "MIT",
-	"homepage": "https://astro-i18n-starter.pages.dev/",
+	"homepage": "https://astro-cms-dpv.pages.dev/",
 	"engines": {
 		"node": ">=20"
 	},
