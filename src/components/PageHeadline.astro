@@ -1,0 +1,57 @@
+---
+// UI used for heading title on each page.
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<header>
+  <h1>{title}</h1>
+  <slot />
+</header>
+
+<style>
+  header {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--sp-l);
+    padding-inline: var(--sp-s);
+    text-align: center;
+    border-radius: 16px;
+    color: var(--color-theme);
+    background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    @media (width < 768px) {
+      margin-inline: calc(50% - 50vw);
+      border-radius: 0;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      background: var(--color-theme);
+      z-index: -1;
+      opacity: 0.1;
+      height: 60%;
+      aspect-ratio: 1;
+      filter: blur(32px);
+    }
+    &::before {
+      inset: 0 0 auto auto;
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+    &::after {
+      inset: auto auto 0 0;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+    }
+  }
+</style>

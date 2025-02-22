@@ -1,0 +1,115 @@
+---
+title: '最初の投稿'
+description: 'この文章はダミーテキストです'
+date: 2024-04-02
+cover: "./cover.png"
+---
+
+## 見出し2見出し2見出し2見出し2見出し2見出し2見出し2見出し2
+本文。あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。 またそのなかでいっしょになったたくさんのひとたち、ファゼーロとロザーロ、羊飼のミーロや、顔の赤いこどもたち、地主のテーモ、山猫博士のボーガント・デストゥパーゴなど、いまこの暗い巨きな石の建物のなかで考えていると、みんなむかし風のなつかしい青い幻燈のように思われます。では、わたくしはいつかの小さなみだしをつけながら、しずかにあの年のイーハトーヴォの五月から十月までを書きつけましょう
+
+### 見出し3見出し3見出し3見出し3見出し3見出し3見出し3見出し3見出し3
+- リスト
+- あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。
+    - ああああ
+    - あああああああああああああああ
+    - あああ
+- あああああああ
+
+#### 見出し4
+1. 数値リスト
+1. Lorem ipsum elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    1. あああ
+    1. あああ
+1. ああああああ
+    * あああ
+    * あああ
+
+## 基本要素
+- *斜体*
+- <b>軽い強調(bタグ)</b>
+- **強い強調**。
+- ~~否定~~
+- あああ `インラインのコード` あああ
+- この文章に脚注をつける.[^1]
+- この文章に脚注をつける.[^2]
+- [リンクテキスト](https://astro.build/)
+- [ ] 未完了チェック
+- [x] 完了済みチェック
+
+[^1]: 脚注の説明。最後にまとめられる
+[^2]: 脚注の説明。最後にまとめられる
+
+> 引用 Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem 
+
+<small>※ Smallテキスト</small>
+
+## Link
+- URLは自動的にリンクされる: https://astro.build/
+- <a href="https://astro.build/" target="brank_">新しいタブで開きたい場合はHTMLで書く</a>
+- [HoverでTitleが出るリンク](https://astro.build/ "こんにちは")
+
+
+## 定義リスト
+
+<dl>
+    <dt>Cat</dt>
+    <dd>Fluffy animal everyone likes</dd>
+</dl>
+
+---
+
+## Table
+右寄せ | 左寄せ
+--:|:--
+aa | aa 
+aadg | aadfgb 
+
+header | 真ん中寄せ | header 
+:--|:--:|:--
+aa | aa | aa 
+
+
+## CODE Highlight
+
+#### test.js
+
+```js
+var elm = document.getElementById('gotop');
+
+    window.addEventListener('scroll', function()
+    if( window.pageYOffset > 200 ) elm.classList.add('show');
+    else elm.classList.remove('show');
+
+}, false);
+```
+
+#### test.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</body>
+</html>
+```
+
+## アコーディオン
+
+<details>
+    <summary>Summary</summary>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</details>
+
+```html
+<details>
+    <summary>Summary</summary>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</details>
+```

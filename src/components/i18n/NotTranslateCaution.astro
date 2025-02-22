@@ -1,0 +1,41 @@
+---
+// Alerts the user that the page is only available in a specific language
+
+import { useTranslations, type Lang } from "@/i18n";
+import { NOT_TRANSLATED_CAUTION } from "@/consts";
+
+interface Props {
+  usedLangs: Lang[];
+}
+
+const t = useTranslations(Astro.currentLocale as Lang);
+const { usedLangs } = Astro.props;
+const currentLocale = Astro.currentLocale as Lang;
+---
+
+{
+  !usedLangs.includes(currentLocale) && (
+    <p>
+      <span class="material-icons-sharp">warning</span>
+      {t(NOT_TRANSLATED_CAUTION)}
+    </p>
+  )
+}
+
+<style>
+  p {
+    padding: 0.5em;
+    margin-block: var(--sp-m);
+    color: var(--color-base);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-size: 1.2em;
+    background: var(--color-caution);
+    border-radius: 6px;
+  }
+  span {
+    margin-inline-end: 0.5em;
+    vertical-align: middle;
+    opacity: 0.8;
+  }
+</style>

@@ -1,0 +1,219 @@
+---
+import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
+const t = useTranslations(Astro.currentLocale as Lang);
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import heroImageAr from "@/assets/ar/hero.svg";
+import heroImageEn from "@/assets/en/hero.svg";
+import heroImageJa from "@/assets/ja/hero.svg";
+import heroImageZhCn from "@/assets/zh-cn/hero.svg";
+import { Image } from "astro:assets";
+
+const locale = Astro.currentLocale as Lang;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<Layout>
+  <Image
+    src={locale === "ja"
+      ? heroImageJa
+      : locale === "zh-cn"
+        ? heroImageZhCn
+        : locale === "ar"
+          ? heroImageAr
+          : heroImageEn}
+    alt={t({
+      ja: "こんにちは",
+      en: "Hello",
+      "zh-cn": "你好",
+      ar: "مرحبًا",
+    })}
+    loading="eager"
+  />
+
+  <p>
+    <em>
+      {
+        t({
+          ja: "i18n Starter は多言語対応サイトを作成するためのシンプルな Astro theme です。Astro v4.0からのi18n機能に対応しています。",
+          en: "i18n Starter is a simple Astro theme for creating multilingual websites. It supports i18n feature from Astro v4.0.",
+          "zh-cn":
+            "i18n Starter 是一个用于创建多语言网站的简单 Astro 主题。它支持 Astro v4.0 的 i18n 功能。",
+          ar: "i18n Starter هو موضوع Astro بسيط لإنشاء مواقع الويب متعددة اللغات.يدعم ميزة i18n من Astro v4.0.",
+        })
+      }
+    </em>
+  </p>
+
+  <p>
+    <a
+      href={`https://docs.astro.build/${locale}/guides/internationalization/`}
+      target="_blank"
+    >
+      Internationalization (i18n) Routing | Astro Docs
+      <span class="material-icons-sharp dir">open_in_new</span>
+    </a>
+  </p>
+
+  <p>
+    {
+      t({
+        ja: "基本的にサブディレクトリ方式のURLのみサポートしています。言語ごとに以下のようなURLで管理されます。ルートURLは指定したデフォルト言語にリダイレクトされます。",
+        en: "Basically, only the subdirectory URL scheme is supported. It is managed by the URL as follows for each language. The root URL is redirected to the specified default language.",
+        "zh-cn":
+          "基本上，只支持子目录 URL 方案。 它由以下 URL 为每种语言进行管理。 根 URL 将重定向到指定的默认语言。",
+        ar: "أساساً، يتم دعم نظام URL الفرعي فقط. يتم إدارتها من خلال URL كما يلي لكل لغة. يتم توجيه عنوان URL الجذري إلى اللغة الافتراضية المحددة.",
+      })
+    }
+  </p>
+
+  <ul>
+    <li>example.com/en/</li>
+    <li>example.com/ja/</li>
+  </ul>
+
+  <h2>
+    {
+      t({
+        ja: "特徴",
+        en: "Feature",
+        "zh-cn": "特点",
+        ar: "ميزة",
+      })
+    }
+  </h2>
+
+  <ul>
+    <li>
+      {
+        t({
+          ja: "Astro公式のi18n機能をサポート",
+          en: "support for Astro's official i18n feature",
+          "zh-cn": "支持 Astro 官方的 i18n 功能",
+          ar: "دعم لميزة i18n الرسمية لـ Astro",
+        })
+      }
+    </li>
+    <li>
+      {
+        t({
+          ja: "多言語ページの様々な管理方法",
+          en: "Various management methods for multilingual pages",
+          "zh-cn": "多语言页面的各种管理方法",
+          ar: "طرق إدارة متعددة للصفحات متعددة اللغات",
+        })
+      }
+    </li>
+    <li>Vanilla CSS</li>
+    <li>
+      {
+        t({
+          ja: "SEOフレンドリー",
+          en: "SEO friendly",
+          "zh-cn": "SEO 友好",
+          ar: "SEO ودية",
+        })
+      }
+    </li>
+    <li>
+      {
+        t({
+          en: "100/100 Lighthouse performance",
+          ja: "100/100 Lighthouse スコア",
+          "zh-cn": "100/100 Lighthouse 性能",
+          ar: "أداء Lighthouse 100/100",
+        })
+      }
+    </li>
+  </ul>
+
+  <h2>
+    {
+      t({
+        en: "Getting Started",
+        ja: "はじめに",
+        "zh-cn": "入门指南",
+        ar: "البدء",
+      })
+    }
+  </h2>
+
+  <p>
+    {
+      t({
+        ja: "Astroの基本的な知識を前提とします。",
+        en: "Assumes basic knowledge of Astro.",
+        "zh-cn": "假设您具有 Astro 的基本知识。",
+        ar: "يفترض المعرفة الأساسية بـ Astro.",
+      })
+    }
+  </p>
+
+  <p>
+    <a href="https://docs.astro.build/" target="_blank">
+      https://docs.astro.build/
+      <span class="material-icons-sharp dir">open_in_new</span>
+    </a>
+  </p>
+
+  <p>
+    {
+      t({
+        ja: "大丈夫な方は、さっそく初めましょう！",
+        en: "If you're okay, let's get started!",
+        "zh-cn": "如果您没问题，让我们开始吧！",
+        ar: "إذا كنت على ما يرام، دعنا نبدأ!",
+      })
+    }
+  </p>
+
+  <p>
+    <a href={getRelativeLocaleUrl(locale, "setup")} class="start">
+      <span class="material-icons-sharp dir">arrow_forward</span>
+      {
+        t({
+          ja: "設定を開始",
+          en: "Start Setup",
+          "zh-cn": "开始设置",
+          ar: "ابدأ الإعداد",
+        })
+      }
+    </a>
+  </p>
+</Layout>
+
+<style>
+  ul {
+    margin-block-start: var(--sp-s);
+    list-style: disc;
+    padding-inline-start: 1em;
+  }
+
+  h2 {
+    color: var(--color-theme);
+    margin-block-start: var(--sp-l);
+  }
+
+  em {
+    display: block;
+    font-style: normal;
+    font-size: 1.3em;
+    margin-block-end: var(--sp-m);
+  }
+
+  .start {
+    display: block;
+    width: fit-content;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background: var(--color-main);
+    color: var(--color-base);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+</style>

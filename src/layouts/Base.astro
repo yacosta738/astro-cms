@@ -1,0 +1,97 @@
+---
+// Basic Layout for All Pages
+
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import LocaleHtmlHead from "@/components/i18n/LocaleHtmlHead.astro";
+import LocaleSuggest from "@/components/i18n/LocaleSuggest.astro";
+
+import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from "@/consts";
+import { useTranslations, LOCALES, getLocalePaths, type Lang } from "@/i18n";
+const t = useTranslations(Astro.currentLocale as Lang);
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  frontmatter?: undefined;
+}
+
+const {
+  title,
+  description,
+} = Astro.props.frontmatter || Astro.props;
+
+const locale = Astro.currentLocale as Lang;
+const localeTitle = title ? `${title} - ${t(SITE_TITLE)}` : t(SITE_TITLE);
+const localeDescription = description || t(SITE_DESCRIPTION);
+---
+
+<!--
+
+  Source Code:
+  https://github.com/psephopaiktes/astro-i18n-starter
+
+-->
+<html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{localeTitle}</title>
+    <meta name="description" content={localeDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+    {
+      getLocalePaths(Astro.url).map((props) => (
+        <link
+          rel="alternate"
+          hreflang={LOCALES[props.lang].lang || props.lang}
+          href={Astro.site?.origin + props.path}
+        />
+      ))
+    }
+
+    <!-- icon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon alternate" sizes="64x64" type="image/png" href="/favicon.png">
+    <link rel="icon" sizes="192x192" href="/android-chrome.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={localeTitle} />
+    <meta property="og:site_name" content={localeTitle} />
+    <meta property="og:description" content={localeDescription} />
+    <meta property="og:image" content={Astro.site + "ogp.png"} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:locale" content={LOCALES[locale].lang || locale} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content={t(X_ACCOUNT)} />
+
+    <!-- External Resource -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;800&display=swap" media="print" onload={`this.media='all'`} />
+
+    <link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp&display=swap" media="print" onload={`this.media='all'`} />
+
+    <LocaleHtmlHead />
+  </head>
+
+  <body>
+    <LocaleSuggest />
+    <Header />
+
+    <main class="l-main l-content">
+      <slot />
+    </main>
+
+    <Footer />
+
+    { import.meta.env.DEV && <style>:root { scroll-behavior: auto }</style> }
+  </body>
+</html>

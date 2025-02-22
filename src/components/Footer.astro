@@ -1,0 +1,76 @@
+---
+// Footer UI displayed on each page.
+import LocalesHomeList from "@/components/i18n/LocalesHomeList.astro";
+---
+
+<footer class="l-footer l-content">
+  <a
+    href="https://github.com/psephopaiktes/astro-i18n-starter"
+    target="_blank"
+    class="github"
+  >
+    GitHub
+    <span class="material-icons-sharp dir">open_in_new</span>
+  </a>
+
+  <ul>
+    <LocalesHomeList />
+  </ul>
+
+  <a class="copy" href="https://hira.page/" target="_blank" dir="ltr">
+    © Akira HIRATA {new Date().getFullYear()}.
+  </a>
+</footer>
+
+<style>
+  footer {
+    padding-block: var(--sp-m) var(--sp-l);
+    text-align: center;
+    background-color: var(--color-theme);
+    color: var(--color-base);
+    border-radius: 16px;
+    margin-block-end: -16px;
+  }
+
+  .github {
+    display: block;
+    margin-block-start: calc(var(--sp-m) * -1 - 24px);
+    margin-inline: auto;
+    width: 160px;
+    height: 48px;
+    line-height: 48px;
+    background: var(--color-accent);
+    color: var(--color-main);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border-radius: 100px;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-block-start: var(--sp-m);
+    gap: var(--sp-s);
+    a {
+      display: block;
+      padding-inline: 0.5em;
+      background: color-mix(in srgb, var(--color-main) 30%, transparent);
+      border-radius: 0.5em;
+    }
+    a::before {
+      content: "translate";
+      font-family: "Material Icons Sharp";
+      vertical-align: middle;
+      margin-inline-end: 0.2em;
+      opacity: 0.5;
+    }
+  }
+
+  .copy {
+    display: block;
+    margin-block-start: var(--sp-m);
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+  }
+</style>

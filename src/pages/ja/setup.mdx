@@ -1,0 +1,126 @@
+---
+layout: "@/layouts/Article.astro"
+title: "初期設定"
+description: "セットアッププロセスについて"
+---
+import PageHeadline from "@/components/PageHeadline.astro";
+import { SITE_TITLE } from "@/consts";
+
+<PageHeadline title={frontmatter.title} />
+
+
+
+## プロジェクトの作成
+
+```sh
+npm create astro@latest -- --template psephopaiktes/astro-i18n-starter
+```
+
+
+
+## 設定
+
+### 1. /src/locales.ts の設定
+
+まず、言語設定ファイルを更新します。
+
+`DEFAULT_LOCALE_SETTING` にデフォルトのロケールを設定し、`LOCALES_SETTING` に希望するロケールのリストを設定します。これは [Starlightの設定](https://starlight.astro.build/reference/configuration/#locales)に準拠しています。
+
+```ts
+// サイトのデフォルトロケールを設定します。
+export const DEFAULT_LOCALE_SETTING: string = "en";
+
+export const LOCALES_SETTING: LocaleSetting = {
+  // サポートするロケールを追加または削除します。
+  en: {
+    label: "English",
+    lang: "en-US", // 任意
+  },
+  ja: {
+    label: "日本語",
+  },
+  "zh-cn": {
+    label: "简体中文",
+    lang: "zh-CN",
+  },
+  ar: {
+    label: "العربية",
+    dir: "rtl", // 任意
+  },
+};
+```
+
+言語コードに関する情報は以下のリンクを参照してください。
+
+> [lang - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang)
+
+### 2. astro.config.mjs の設定
+
+`site`にあなたのサイトのURLを設定します。
+
+```diff
+import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
+import { defineConfig } from 'astro/config';
+import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from './src/locales';
+
+export default defineConfig({
+- site: 'https://astro-i18n-starter.pages.dev',
++ site: 'https://your-site.com',
+  i18n: {
+  defaultLocale: DEFAULT_LOCALE_SETTING,
+  locales: Object.keys(LOCALES_SETTING),
+  routing: {
+    prefixDefaultLocale: true,
+    redirectToDefaultLocale: false,
+  },
+  },
+...
+```
+
+Astro の詳細な設定オプションについては公式ドキュメントを参照してください。
+
+* [Configuration Reference | Docs](https://docs.astro.build/en/reference/configuration-reference/)
+* [Internationalization (i18n) Routing | Docs](https://docs.astro.build/en/guides/internationalization/#configure-i18n-routing)
+
+注: `prefixDefaultLocale` と `redirectToDefaultLocale` の設定を変更することは推奨されません。{ SITE_TITLE } ではクライアントサイドのJavascriptでリダイレクトを管理しており、URLにlocaleが含まれていない場合はデフォルトのlocaleにリダイレクトします。例えば、`/setup/` は `/en/setup/` にリダイレクトされます。
+
+
+
+## ディレクトリ構造
+
+[Astroのディレクトリ構造](https://docs.astro.build/en/basics/project-structure/)に準拠します。
+
+```text
+src/
+├── assets/
+│   └── en/, ja/ ...
+├── blog/
+│   └── en/, ja/ ...
+├── components/
+│   └── i18n/
+├── layouts/
+├── pages/
+│   ├── [lang]/
+│   ├── en/, ja/ ...
+│   ├── 404.astro
+│   └── index.astro
+├── styles/
+├── content.config.ts
+├── consts.ts
+├── i18n.ts
+└── locales.ts
+```
+
+### src/components/i18n
+多言語対応サイトで使用するUIコンポーネントのディレクトリです
+
+### src/pages
+- `src/pages/[lang]/` 以下のファイルは、単一の `.astro` ファイルから各言語のHTMLファイルを動的に生成します。
+- `src/pages/en/`、`src/pages/ja/` などのディレクトリから各言語のHTMLファイルをそれぞれ生成することもできます。
+
+### src/consts.ts
+プロジェクト内でimportして使用できる定数データのファイルです。使用しないこともできます。
+
+### src/i18n.ts
+{ SITE_TITLE } で使用している関数などの定義ファイルです。基本的に編集する必要はありません。

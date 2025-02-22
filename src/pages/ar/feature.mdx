@@ -1,0 +1,158 @@
+---
+layout: "@/layouts/Article.astro"
+title: "ميزات أخرى"
+description: "سنشرح هنا المزيد من الميزات المتاحة في Astro i18n Theme."
+---
+import PageHeadline from "@/components/PageHeadline.astro";
+import { SITE_TITLE } from "@/consts";
+
+<PageHeadline title={frontmatter.title} />
+
+
+
+## المكونات
+
+تحتوي `src/components/i18n/` على بعض المكونات واجهة المستخدم المفيدة عند إنشاء موقع متعدد اللغات. يمكنك تخصيص المحتوى أو استيراده حسب الحاجة.
+
+### LocaleSelect.astro
+واجهة مستخدم لتبديل اللغة المستخدمة.
+
+### LocaleSelectSingle.astro
+واجهة مستخدم لتبديل اللغة المستخدمة عبر رابط. استخدمها إذا كنت تدعم لغتين فقط.
+
+### LocalesHomeList.astro
+تعيد قائمة بعلامات تبويب لصفحات اللغات المختلفة.
+
+### LocaleSuggest.astro
+واجهة مستخدم لعرض رابط إلى لغة المستعرض عندما يصل المستخدم إلى عنوان URL مختلف عن لغة المستعرض.
+
+على سبيل المثال، إذا قام المستخدم بزيارة عنوان URL `/ja/[slug]` باستخدام متصفح مع إعدادات اللغة الإنجليزية، سيقترح رابطًا إلى `/en/[slug]`.
+
+يتم حفظ الإعدادات محليًا في جهاز المستخدم ولا يتم إعادة عرضها مرة أخرى.
+
+### LocaleHtmlHead.astro
+يمكنك هنا تعريف إعدادات `<head>` لكل لغة. في المثال، يتم تحميل خطوط [Noto Font](https://fonts.google.com/noto/) لكل لغة وتطبيق الأنماط الخاصة بها.
+
+### NotTranslateCaution.astro
+يمكنك عرض تحذير للمستخدم عندما يكون هناك صفحة معينة متاحة بلغة واحدة فقط.
+
+صفحة [Monolingual](/monolingual/) هي مثال على ذلك. عند عرض هذه الصفحة بلغة غير الإنجليزية، سيتم عرض واجهة تحذير للمستخدم.
+
+تم تعيين نص واجهة التحذير في المثال في `/src/const.ts`.
+
+## 404
+
+تتكون صفحة الخطأ 404 في { SITE_TITLE } من ملفين. إذا كنت ترغب في تخصيص تصميم صفحة الخطأ 404، يكفي تحرير الملف `src/pages/[lang]/404.astro` فقط.
+
+### src/pages/404.astro
+
+ينشئ هذا الملف ما يلي:
+
+> /404.html
+
+معظم خدمات الاستضافة تستخدم هذا الملف عندما لا يتم العثور على الصفحة.
+
+https://docs.astro.build/en/basics/astro-pages/#custom-404-error-page
+
+عندما يتم الوصول إلى هذا الملف في { SITE_TITLE }، سيتم إعادة توجيه المستخدم إلى صفحة الخطأ 404 المناسبة وفقًا للغة النظام وما إلى ذلك.
+
+<details>
+    <summary>شروط إعادة التوجيه التفصيلية</summary>
+    سيتم إجراء إعادة التوجيه وفقًا للشروط التالية. يرجى الاطلاع على [الشيفرة المصدرية](https://github.com/psephopaiktes/astro-i18n-starter/blob/main/src/pages/404.astro#L25) لمزيد من التفاصيل.
+
+    1. إذا كان عنوان URL يحتوي على `lang` مثل `/ja/...`
+    2. إذا كان `localStorage.selectedLang` يحتوي على `lang`
+        * يتم حفظ `localStorage.selectedLang` عندما يقوم المستخدم بتحديد اللغة في واجهة المستخدم.
+    3. إذا كانت صفحة الرابط الأصلية تحتوي على `lang` مثل `/ja/...`
+</details>
+
+### src/pages/[lang]/404.astro
+
+ينشئ هذا الملف بشكل ديناميكي ما يلي:
+
+> * /en/404/index.html
+> * /ja/404/index.html
+> * ...
+
+باستخدام عملية `history.replaceState()`، سيتم عرض عنوان URL الذي قام المستخدم بزيارته قبل إعادة التوجيه في متصفحه.
+
+
+## نصائح CSS
+
+### تقسيم الـ CSS حسب اللغة
+
+يمكنك تقسيم التعريفات في الـ CSS حسب اللغة عن طريق كتابة الكود التالي:
+
+```css
+:lang(en) {
+    /* أنماط اللغة الإنجليزية */
+}
+:lang(ar) {
+    /* أنماط اللغة العربية */
+}
+```
+
+ومع ذلك، يجب ملاحظة أنه في هذه الحالة سيتم تحميل CSS لجميع اللغات في نفس الوقت، مما يؤدي إلى استهلاك غير ضروري للموارد.
+
+إذا كنت ترغب في تقسيم التعريفات داخل ملف `.astro`، يمكنك استخدام الكود التالي، أو يمكنك أيضًا النظر في تقسيم التعريفات داخل ملف [LocaleHtmlHead.astro](#localehtmlheadastro).
+
+```astro
+---
+import { type Lang } from "@/i18n";
+const locale = Astro.currentLocale as Lang;
+---
+
+{
+    locale === "en" ? (
+        <style>
+            /* أنماط اللغة الإنجليزية */
+        </style>
+    )
+    : locale === "ar" ? (
+        <style>
+                /* أنماط اللغة العربية */
+        </style>
+    )
+    : null
+}
+```
+
+
+### تباعد الحروف في اللغة العربية
+
+قد تحتاج في بعض التصاميم إلى ضبط تباعد الحروف، ولكن يجب أن يتم الحرص على عدم فصل الحروف في اللغة العربية.
+
+> [Right-to-left Styling](https://rtlstyling.com/posts/rtl-styling#1.-letter-spacing)
+
+لذلك، يرجى ملاحظة أنه في { SITE_TITLE }، يتم تعريف الكود التالي داخل ملف `src/styles/base.css`:
+
+```css
+:lang(ar) {
+    * { letter-spacing: 0 !important; }
+}
+```
+
+
+### RTL للأيقونات
+
+في اللغات التي تكتب من اليمين إلى اليسار، يجب أن تتم عكس الأيقونات مثل السهم.
+
+> [Right to left | Apple Developer Documentation](https://developer.apple.com/design/human-interface-guidelines/right-to-left#Interface-icons)
+
+في { SITE_TITLE }، نستخدم [Material Icon](https://fonts.google.com/icons)، ويتم تعريف الكود التالي داخل ملف `src/styles/base.css`:
+
+```css
+[class^="material-icons"]:dir(rtl).dir {
+    scale: -1 1;
+}
+```
+
+باستخدام الكلاس `.dir`، ستتم عكس الأيقونات في اللغات التي تكتب من اليمين إلى اليسار.
+
+```html
+<span class="material-icons-sharp dir">arrow_forward</span>
+```
+
+العرض الفعلي:
+<span class="material-icons-sharp dir">arrow_forward</span>
+<span class="material-icons-sharp dir">open_in_new</span>

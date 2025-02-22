@@ -1,0 +1,112 @@
+---
+layout: "@/layouts/Article.astro"
+title: "إضافة صفحة"
+description: "إضافة وإدارة الصفحات متعددة اللغات"
+---
+import PageHeadline from "@/components/PageHeadline.astro";
+import { SITE_TITLE } from "@/consts";
+
+<PageHeadline title={frontmatter.title} />
+
+هناك عدة طرق لإنشاء صفحات متعددة اللغات في { SITE_TITLE }.
+
+
+
+## إذا كنت تريد فصل الملفات لكل لغة
+
+قم بإنشاء مجلد لكل لغة تحت `pages` وأضف الملفات بتنسيق Astro أو Markdown.
+
+```text
+src/pages
+├── en/
+│   ├── page-1.astro
+│   └── page-2.mdx
+└── ar/
+  ├── page-1.astro
+  └── page-2.mdx
+```
+
+سيتم إنشاء الصفحات التالية
+
+* /en/page-1/index.html
+* /en/page-2/index.html
+* /ar/page-1/index.html
+* /ar/page-2/index.html
+
+
+
+## إذا كنت تريد إدارة كل شيء في ملف واحد
+
+إذا لم يكن هناك الكثير من النصوص في الصفحة، يمكنك استخدام ميزة [التوجيه الديناميكي في Astro](https://docs.astro.build/en/guides/routing/#dynamic-routes) لإنشاء صفحات لكل لغة ديناميكيًا من ملف واحد.
+
+```text
+src/pages
+└── [lang]/
+    ├── page-1.astro
+    └── page-2.astro
+```
+
+داخل الملف، قم باستيراد كائن `LOCALES` واستخدم دالة `getStaticPaths()` في Astro لإنشاء المسارات الديناميكية.
+
+```astro
+---
+import { LOCALES } from "@/i18n";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+```
+
+سيتم إنشاء الصفحات التالية
+
+* /en/page-1/index.html
+* /en/page-2/index.html
+* /ar/page-1/index.html
+* /ar/page-2/index.html
+
+
+
+## إذا كنت تريد استخدام Content Collection
+
+إذا كنت تريد إدارة صفحات المدونة أو الأخبار بملفات Markdown، يمكنك استخدام ميزة Content Collection في Astro.
+
+#### Directory
+
+```text
+src/
+├── content.config.ts
+├── blog/
+│   ├── en/
+│   │   ├── first-post.md
+│   │   └── second-post.md
+│   └── ar/
+│        ├── first-post.md
+│        └── second-post.md
+└── pages/[lang]/blog/
+  ├── index.astro
+  └── [...id].astro
+```
+
+#### pages/[lang]/blog/[...id].astro
+
+```astro
+---
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    const [lang, ...id] = post.id.split("/");
+    return { params: { lang, id: id.join("/") || undefined }, props: post };
+  });
+}
+---
+```
+
+
+لمزيد من التفاصيل، يرجى مراجعة وثائق Astro.
+
+> [Content Collections | Docs](https://docs.astro.build/en/guides/content-collections/)
