@@ -1,0 +1,46 @@
+name: Lighthouse CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  get-cloudflare-url:
+    runs-on: ubuntu-latest
+    outputs:
+      preview_url: ${{ steps.extract-url.outputs.url }}
+    steps:
+      - name: Construct Cloudflare Preview URL
+        id: extract-url
+        run: |
+          # Use GITHUB_HEAD_REF for pull requests; otherwise extract branch name from GITHUB_REF.
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            BRANCH="$GITHUB_HEAD_REF"
+          else
+            BRANCH="${GITHUB_REF#refs/heads/}"
+          fi
+          echo "Original branch name: $BRANCH"
+
+          # URL-ize the branch name:
+          # Replace any character that is not a letter or digit with a hyphen, then convert to lowercase.
+          SAFE_BRANCH=$(echo "$BRANCH" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+          echo "URL-ized branch name: $SAFE_BRANCH"
+
+          PREVIEW_URL="https://${SAFE_BRANCH}.codary-tech.pages.dev"
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "Preview URL: $PREVIEW_URL"
+      - name: Display obtained URL
+        run: |
+          echo "Obtained URL: ${{ steps.extract-url.outputs.url }}"
+
+  pagespeed-insights:
+    runs-on: ubuntu-latest
+    needs: get-cloudflare-url
+    steps:
+      - name: Running Page Speed Insights
+        uses: jakepartusch/psi-action@v1.3
+        id: psi
+        with:
+          url: ${{ needs.get-cloudflare-url.outputs.preview_url }}
+          threshold: 75
+          strategy: mobile
+          key: ${{ secrets.PAGE_SPEED_API_KEY }}

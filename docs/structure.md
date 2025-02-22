@@ -1,6 +1,24 @@
 # Project Structure
 
 ```plaintext
+├───.devcontainer/
+│   ├───Dockerfile
+│   ├───devcontainer.json
+│   └───welcome-message.txt
+├───.github/
+│   ├───ISSUE_TEMPLATE/
+│   │   ├───bug_report.md
+│   │   └───feature_request.md
+│   ├───workflows/
+│   │   ├───cleanup.yml
+│   │   ├───codeql.yml
+│   │   ├───image-actions.yml
+│   │   ├───links.yml
+│   │   └───pagespeed-insights.yml
+│   ├───.DS_Store
+│   ├───FUNDING.yml
+│   ├───PULL_REQUEST_TEMPLATE.md
+│   └───dependabot.yml
 ├───.vscode/
 │   ├───extensions.json
 │   ├───launch.json
