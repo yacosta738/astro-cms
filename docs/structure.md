@@ -28,6 +28,8 @@
 │   ├───lighthouse.png
 │   └───structure.md
 ├───public/
+│   ├───admin/
+│   │   └───config.yml
 │   ├───android-icon.png
 │   ├───apple-touch-icon.png
 │   ├───favicon.png
@@ -64,6 +66,8 @@
 │   │   │   ├───ar/
 │   │   │   │   └───john-doe.json
 │   │   │   ├───en/
+│   │   │   │   └───john-doe.json
+│   │   │   ├───es/
 │   │   │   │   └───john-doe.json
 │   │   │   ├───ja/
 │   │   │   │   └───john-doe.json
@@ -164,6 +168,7 @@
 │   │   │   └───setup.mdx
 │   │   ├───.DS_Store
 │   │   ├───404.astro
+│   │   ├───admin.astro
 │   │   ├───index.astro
 │   │   └───robots.txt.ts
 │   ├───styles/

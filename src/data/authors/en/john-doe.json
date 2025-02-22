@@ -1,6 +1,6 @@
 {
 	"name": "John Doe",
-	"bio": "John Doe is a web developer, designer, and author.",
-	"avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
-	"email": "john.doe@test.com"
+	"email": "john.doe@test.com",
+	"avatar": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/76/7640681da167175fb61442644b45a671e6429127_full.jpg",
+	"bio": "John Doe is a web developer, designer, and author."
 }

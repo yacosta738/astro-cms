@@ -8,10 +8,15 @@ const blog = defineCollection({
 			title: z.string(),
 			description: z.string(),
 			date: z.coerce.date(),
+			lastModified: z.coerce
+				.date()
+				.optional()
+				.default(() => new Date()),
 			cover: image().optional(),
 			author: reference("authors"),
 			tags: z.array(reference("tags")),
 			category: reference("categories"),
+			draft: z.boolean().optional().default(false),
 		}),
 });
 
