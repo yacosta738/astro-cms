@@ -1,29 +1,29 @@
 ---
-import { LOCALES, useTranslations, type Lang } from "@/i18n";
-import Layout from "@/layouts/Base.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
+import { LOCALES, type Lang, useTranslations } from "@/i18n";
+import Layout from "@/layouts/Base.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
 const posts = (await getCollection("blog"))
-  .filter((post) => post.id.split("/")[0] === locale)
-  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+	.filter((post) => post.id.split("/")[0] === locale)
+	.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 
 const title = t({
-  ja: "ブログ",
-  en: "Blog",
-  "zh-cn": "博客",
-  ar: "مدونة",
-  es: "Blog",
+	ja: "ブログ",
+	en: "Blog",
+	"zh-cn": "博客",
+	ar: "مدونة",
+	es: "Blog",
 });
 
 export const getStaticPaths = () =>
-  Object.keys(LOCALES).map((lang) => ({
-    params: { lang },
-  }));
+	Object.keys(LOCALES).map((lang) => ({
+		params: { lang },
+	}));
 ---
 
 <Layout {title}>

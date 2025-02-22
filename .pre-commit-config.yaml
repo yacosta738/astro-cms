@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+  - repo: https://github.com/lycheeverse/lychee.git
+    rev: v0.15.1
+    hooks:
+      - id: lychee
+        # Optionally include additional CLI arguments
+        args: ["--no-progress", "--exclude-path", "node_modules", "--exclude-path", "public/admin"]
+  - repo: local
+    hooks:
+      - id: run-check-script
+        name: run-check-script
+        entry: pnpm
+        args: ['run', 'check']
+        language: system
+        pass_filenames: false
+      - id: run-structure-script
+        name: run-structure-script
+        entry: pnpm
+        args: ['run', 'structure']
+        language: system
+        pass_filenames: false

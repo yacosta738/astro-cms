@@ -2,14 +2,14 @@
 // Redirect to Top page for user's system locale
 // Basically, you don't need to edit this file.
 
+import { SITE_DESCRIPTION, SITE_TITLE, X_ACCOUNT } from "@/consts";
 import {
-  useTranslations,
-  getLocalePaths,
-  LOCALES,
-  DEFAULT_LOCALE,
-  type Lang,
+	DEFAULT_LOCALE,
+	LOCALES,
+	type Lang,
+	getLocalePaths,
+	useTranslations,
 } from "@/i18n";
-import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from "@/consts";
 
 const t = useTranslations(Astro.currentLocale as Lang);
 const langs = Object.keys(LOCALES);

@@ -1,6 +1,14 @@
 /* define the layout and structure of the entire page */
 
 .l-header {
+	/* position: sticky;
+	top: 0;
+	z-index: 1000; */
+	transition: transform 0.3s ease;
+}
+
+.l-header.hidden {
+	transform: translateY(-100%);
 }
 
 .l-main {

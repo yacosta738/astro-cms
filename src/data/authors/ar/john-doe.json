@@ -1,6 +1,6 @@
 {
-    "name": "John Doe",
-    "bio": "جون دو هو مطور ويب ومصمم ومؤلف.",
-    "avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
-    "email": "john.doe@test.com"
+	"name": "John Doe",
+	"bio": "جون دو هو مطور ويب ومصمم ومؤلف.",
+	"avatar": "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50",
+	"email": "john.doe@test.com"
 }

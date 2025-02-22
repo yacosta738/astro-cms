@@ -1,22 +1,22 @@
 ---
-import { LOCALES, useTranslations, type Lang } from "@/i18n";
+import { LOCALES, type Lang, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 const t = useTranslations(Astro.currentLocale as Lang);
 import { getRelativeLocaleUrl } from "astro:i18n";
 
+import { Image } from "astro:assets";
 import heroImageAr from "@/assets/ar/hero.svg";
 import heroImageEn from "@/assets/en/hero.svg";
 import heroImageEs from "@/assets/es/hero.svg";
 import heroImageJa from "@/assets/ja/hero.svg";
 import heroImageZhCn from "@/assets/zh-cn/hero.svg";
-import { Image } from "astro:assets";
 
 const locale = Astro.currentLocale as Lang;
 
 export const getStaticPaths = () =>
-  Object.keys(LOCALES).map((lang) => ({
-    params: { lang },
-  }));
+	Object.keys(LOCALES).map((lang) => ({
+		params: { lang },
+	}));
 ---
 
 <Layout>

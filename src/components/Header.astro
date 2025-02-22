@@ -1,10 +1,10 @@
 ---
 // Header & Navigation UI displayed on each page.
 
-import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
 import { Image } from "astro:assets";
-import { useTranslations, type Lang } from "@/i18n";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
+import { type Lang, useTranslations } from "@/i18n";
 const t = useTranslations(Astro.currentLocale as Lang);
 
 import AstroImage from "@/assets/astro-logo.svg";
@@ -12,7 +12,7 @@ import AstroImage from "@/assets/astro-logo.svg";
 const locale = Astro.currentLocale as Lang;
 
 const isActive = (path: string) =>
-  getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
+	getRelativeLocaleUrl(locale, path) === Astro.url.pathname;
 ---
 
 <header class="l-header">

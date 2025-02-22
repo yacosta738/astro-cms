@@ -1,22 +1,21 @@
-import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import { getCollection } from "astro:content";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import { localeParams } from "@/i18n";
+import rss from "@astrojs/rss";
 
 export const getStaticPaths = () => localeParams;
 
 export async function GET(context) {
-
 	const locale = context.params.lang;
 
-	const localeTitle = typeof SITE_TITLE === "string"
-		? SITE_TITLE
-		: SITE_TITLE[locale];
-	const localeDescription = typeof SITE_DESCRIPTION === "string"
-		? SITE_DESCRIPTION
-		: SITE_DESCRIPTION[locale];
+	const localeTitle =
+		typeof SITE_TITLE === "string" ? SITE_TITLE : SITE_TITLE[locale];
+	const localeDescription =
+		typeof SITE_DESCRIPTION === "string"
+			? SITE_DESCRIPTION
+			: SITE_DESCRIPTION[locale];
 
-	const posts = await getCollection('blog', ({ id }) => {
+	const posts = await getCollection("blog", ({ id }) => {
 		return id.split("/")[0] === locale;
 	});
 	posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
