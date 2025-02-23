@@ -96,7 +96,7 @@ src/
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => !data.draft)
 
   return posts.map((post) => {
     const [lang, ...id] = post.id.split("/");
