@@ -1,0 +1,46 @@
+---
+import { Picture } from "astro:assets";
+
+export type ImageFormat = "avif" | "webp" | "jpeg" | "png" | "gif" | "svg";
+
+interface Props {
+	src: string;
+	alt: string;
+	width?: number;
+	height?: number;
+	widths?: number[];
+	sizes?: string;
+	formats?: ImageFormat[];
+	fallbackFormat?: string;
+	class?: string;
+}
+
+const {
+	src,
+	alt,
+	width = 1960,
+	height = 1102,
+	widths = [392, 700, 980, 1960],
+	sizes = `(max-width: 360px) 392px,
+           (max-width: 720px) 700px,
+           (max-width: 1600px) 980px,
+           1960px`,
+	formats = ["avif", "webp", "jpeg"],
+	fallbackFormat = "avif",
+	class: className = "mx-auto w-full max-w-full rounded-lg",
+} = Astro.props;
+
+const isRemoteImage = src?.startsWith("http");
+---
+
+<Picture
+  src={src}
+  alt={alt}
+  widths={widths}
+  sizes={sizes}
+  formats={formats}
+  fallbackFormat={fallbackFormat}
+  class={className}
+  inferSize={true}
+  {...(!isRemoteImage && { width, height })}
+/>

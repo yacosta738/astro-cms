@@ -43,6 +43,49 @@
 │   │   │   └───hero.svg
 │   │   ├───es/
 │   │   │   └───hero.svg
+│   │   ├───images/
+│   │   │   ├───ar/
+│   │   │   │   ├───first-post/
+│   │   │   │   │   └───...
+│   │   │   │   ├───second-post/
+│   │   │   │   │   └───...
+│   │   │   │   └───third-post/
+│   │   │   │       └───...
+│   │   │   ├───en/
+│   │   │   │   ├───first-post/
+│   │   │   │   │   └───...
+│   │   │   │   ├───second-post/
+│   │   │   │   │   └───...
+│   │   │   │   └───third-post/
+│   │   │   │       └───...
+│   │   │   ├───es/
+│   │   │   │   ├───first-post/
+│   │   │   │   │   └───...
+│   │   │   │   ├───second-post/
+│   │   │   │   │   └───...
+│   │   │   │   └───third-post/
+│   │   │   │       └───...
+│   │   │   ├───ja/
+│   │   │   │   ├───first-post/
+│   │   │   │   │   └───...
+│   │   │   │   ├───second-post/
+│   │   │   │   │   └───...
+│   │   │   │   └───third-post/
+│   │   │   │       └───...
+│   │   │   ├───zh-cn/
+│   │   │   │   ├───first-post/
+│   │   │   │   │   └───...
+│   │   │   │   ├───second-post/
+│   │   │   │   │   └───...
+│   │   │   │   └───third-post/
+│   │   │   │       └───...
+│   │   │   ├───DALL·E 2025-02-21 23.23.12 - Una representación conceptual del Humane AI Pin, un dispositivo pequeño y elegante que se adhiere a la ropa. El diseño es minimalista, con un cuerpo m.webp
+│   │   │   ├───blog-placeholder-1.avif
+│   │   │   ├───blog-placeholder-2.avif
+│   │   │   ├───blog-placeholder-3.avif
+│   │   │   ├───blog-placeholder-4.avif
+│   │   │   ├───cloudflare-vs-laliga-2.webp
+│   │   │   └───photo-1601987077677-5346c0c57d3f.avif
 │   │   ├───ja/
 │   │   │   └───hero.svg
 │   │   ├───zh-cn/
@@ -60,6 +103,7 @@
 │   │   │   └───NotTranslateCaution.astro
 │   │   ├───Footer.astro
 │   │   ├───Header.astro
+│   │   ├───OptimizedPicture.astro
 │   │   └───PageHeadline.astro
 │   ├───data/
 │   │   ├───authors/
@@ -75,6 +119,8 @@
 │   │   │       └───john-doe.json
 │   │   ├───blog/
 │   │   │   ├───ar/
+│   │   │   │   ├───2025/
+│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -82,6 +128,8 @@
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
 │   │   │   ├───en/
+│   │   │   │   ├───2025/
+│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -89,6 +137,8 @@
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
 │   │   │   ├───es/
+│   │   │   │   ├───2025/
+│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -97,6 +147,8 @@
 │   │   │   │   │   └───...
 │   │   │   │   └───.DS_Store
 │   │   │   ├───ja/
+│   │   │   │   ├───2025/
+│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -104,6 +156,8 @@
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
 │   │   │   ├───zh-cn/
+│   │   │   │   ├───2025/
+│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -113,26 +167,37 @@
 │   │   │   └───.DS_Store
 │   │   ├───categories/
 │   │   │   ├───ar/
-│   │   │   │   └───internet.md
+│   │   │   │   ├───internet.md
+│   │   │   │   └───test.md
 │   │   │   ├───en/
-│   │   │   │   └───internet.md
+│   │   │   │   ├───internet.md
+│   │   │   │   └───test.md
 │   │   │   ├───es/
-│   │   │   │   └───internet.md
+│   │   │   │   ├───internet.md
+│   │   │   │   └───test.md
+│   │   │   ├───ja/
+│   │   │   │   └───test.md
 │   │   │   ├───jp/
 │   │   │   │   └───internet.md
 │   │   │   └───zh-cn/
-│   │   │       └───internet.md
+│   │   │       ├───internet.md
+│   │   │       └───test.md
 │   │   ├───tags/
 │   │   │   ├───ar/
-│   │   │   │   └───ai.md
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
 │   │   │   ├───en/
-│   │   │   │   └───ai.md
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
 │   │   │   ├───es/
-│   │   │   │   └───ai.md
-│   │   │   ├───jp/
-│   │   │   │   └───ai.md
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
+│   │   │   ├───ja/
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
 │   │   │   └───zh-cn/
-│   │   │       └───ai.md
+│   │   │       ├───ai.md
+│   │   │       └───test.md
 │   │   └───.DS_Store
 │   ├───layouts/
 │   │   ├───Article.astro

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
+import { getCollection, getEntries, getEntry, render } from "astro:content";
 import Layout from "@/layouts/Article.astro";
 
 export async function getStaticPaths() {
@@ -17,20 +17,38 @@ const post = Astro.props;
 
 const { Content } = await render(post);
 const title = post.data.title;
+
+// Fetch category and tags data
+const category = await getEntry(post.data.category);
+const tags = await getEntries(post.data.tags);
+const author = await getEntry(post.data.author);
+
+console.log(category, tags, author);
 ---
 
 <Layout {title}>
-  {
-    post.data.cover && (
-      <Image src={post.data.cover} alt={post.data.title} class="cover" />
-    )
-  }
+  {post.data.cover && (
+    <Image src={post.data.cover} alt={post.data.title} class="cover" />
+  )}
 
   <header>
     <h1>{title}</h1>
-    <time datetime={post.data.date.toISOString()}>
-      {post.data.date.toLocaleDateString(lang)}
-    </time>
+    <div class="meta">
+      {category && <span class="category">{category.data.title}</span>}
+      {tags && (
+        <div class="tags">
+          {tags.map((tag) => (
+            <span class="tag">{tag?.data.title}</span>
+          ))}
+        </div>
+      )}
+      <div class="author-date">
+        {post.data.author && <span class="author">By {author?.data.name}</span>}
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString(lang)}
+        </time>
+      </div>
+    </div>
   </header>
 
   <Content class="material-icons" />
@@ -44,6 +62,36 @@ const title = post.data.title;
     h1 {
       color: var(--color-theme);
       font-size: 1.8rem;
+    }
+    .meta {
+      margin-block-start: var(--sp-s);
+    }
+    .category {
+      display: inline-block;
+      background: var(--color-theme);
+      color: var(--color-base);
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    .tags {
+      display: flex;
+      gap: 0.5em;
+      flex-wrap: wrap;
+      margin-block: 0.5em;
+    }
+    .tag {
+      background: var(--color-muted);
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.8em;
+    }
+    .author-date {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      color: var(--color-muted);
+      font-size: 0.9em;
     }
   }
   .cover {
