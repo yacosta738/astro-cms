@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection, getEntries, getEntry, render } from "astro:content";
+import { type Lang, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Article.astro";
 
 export async function getStaticPaths() {
@@ -13,17 +14,16 @@ export async function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
 const post = Astro.props;
 
 const { Content } = await render(post);
 const title = post.data.title;
 
-// Fetch category and tags data
 const category = await getEntry(post.data.category);
 const tags = await getEntries(post.data.tags);
 const author = await getEntry(post.data.author);
-
-console.log(category, tags, author);
 ---
 
 <Layout {title}>
@@ -35,15 +35,54 @@ console.log(category, tags, author);
     <h1>{title}</h1>
     <div class="meta">
       {category && <span class="category">{category.data.title}</span>}
-      {tags && (
+      {category ? (
+        <span class="category">{category.data.title}</span>
+      ) : (
+        <span class="category">
+    {
+   t({
+      ja: "カテゴリなし",
+      en: "No category",
+      "zh-cn": "无类别",
+      ar: "بدون تصنيف",
+      es: "Sin categoría",
+    })
+      }
+        </span>
+      )}
+      {tags && tags.length > 0 ? (
         <div class="tags">
           {tags.map((tag) => (
             <span class="tag">{tag?.data.title}</span>
           ))}
         </div>
+      ) : (
+        <div class="tags">
+          <span class="tag">
+            {t({
+              ja: "タグなし",
+              en: "No tags",
+              "zh-cn": "无标签",
+              ar: "بدون وسوم",
+              es: "Sin etiquetas",
+            })}
+          </span>
+        </div>
       )}
       <div class="author-date">
-        {post.data.author && <span class="author">By {author?.data.name}</span>}
+        {author ? (
+          <span class="author">By {author?.data.name}</span>
+        ) : (
+          <span class="author">
+            {t({
+              ja: "作者不明",
+              en: "Unknown author",
+              "zh-cn": "未知作者",
+              ar: "مؤلف مجهول",
+              es: "Autor desconocido",
+            })}
+          </span>
+        )}
         <time datetime={post.data.date.toISOString()}>
           {post.data.date.toLocaleDateString(lang)}
         </time>
