@@ -1,0 +1,5 @@
+👋 Welcome to ASTRO_STARTER_CMS in GitHub Codespaces!
+
+🛠️  Your development environment is specially configured for the ASTRO_STARTER_CMS project.
+
+🚀 The example application should start soon. Explore the repository and start creating!

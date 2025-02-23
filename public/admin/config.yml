@@ -1,0 +1,154 @@
+local_backend: true
+
+logo_url: /favicon.svg
+
+backend:
+  name: github
+  repo: yacosta738/astro-cms
+  branch: main
+  base_url: https://sveltia-cms-auth.yunielacosta738.workers.dev/
+
+publish_mode: editorial_workflow
+
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '-'
+
+
+media_folder: 'public/images'
+public_folder: '/images'
+
+i18n:
+  structure: 'multiple_folders'
+  locales: ['en', 'es', 'ar', 'ja', 'zh-cn']
+  default_locale: 'en'
+
+
+collections:
+  - name: 'posts'
+    label: 'Posts'
+    label_singular: 'Post'
+    folder: 'src/data/blog'
+    create: true
+    slug: '{{year}}/{{month}}/{{day}}/{{slug}}'
+    extension: mdx
+    i18n: true
+    fields:
+      - name: 'title'
+        widget: 'string'
+        label: 'Title'
+        i18n: true
+      - name: 'description'
+        widget: 'string'
+        label: 'Description'
+        i18n: true
+      - name: 'date'
+        widget: 'datetime'
+        label: 'Publish Date'
+        i18n: 'duplicate'
+      - name: 'lastModified'
+        widget: 'datetime'
+        label: 'Last Modified'
+        required: false
+        default: "{{now}}"
+        i18n: 'duplicate'
+      - name: 'author'
+        widget: 'relation'
+        collection: 'authors'
+        value_field: '{{slug}}'
+        search_fields: ['name']
+        display_fields: ['name']
+        multiple: false
+        i18n: 'duplicate'
+      - name: 'cover'
+        widget: 'image'
+        label: 'Cover'
+        i18n: 'duplicate'
+      - name: 'tags'
+        widget: 'relation'
+        collection: 'tags'
+        value_field: '{{slug}}'
+        search_fields: ['title']
+        display_fields: ['title']
+        multiple: true
+        i18n: 'duplicate'
+      - name: 'category'
+        widget: 'relation'
+        collection: 'categories'
+        value_field: '{{slug}}'
+        search_fields: ['title']
+        display_fields: ['title']
+        multiple: false
+        i18n: 'duplicate'
+      - name: 'draft'
+        widget: 'boolean'
+        label: 'Draft'
+        default: true
+        i18n: 'duplicate'
+      - name: 'body'
+        widget: 'markdown'
+        label: 'Body'
+        i18n: true
+
+  - name: categories
+    label: Categories
+    label_singular: Category
+    folder: src/data/categories
+    slug: '{{title}}'
+    create: true
+    i18n: true
+    fields:
+      - name: title
+        widget: string
+        label: Title
+        i18n: true
+      - name: order
+        widget: number
+        label: Order
+        required: false
+        value_type: int
+        min: -1000
+        max: 1000
+        step: 1
+        default: 0
+        i18n: 'duplicate'
+
+  - name: tags
+    label: Tags
+    label_singular: Tag
+    folder: src/data/tags
+    slug: '{{title}}'
+    create: true
+    i18n: true
+    fields:
+      - name: title
+        widget: string
+        label: Title
+        i18n: true
+
+  - name: 'authors'
+    label: 'Authors'
+    label_singular: 'Author'
+    folder: src/data/authors
+    slug: '{{name}}'
+    create: true
+    extension: json
+    i18n: true
+    fields:
+      - name: 'name'
+        widget: 'string'
+        label: 'Name'
+        i18n: 'duplicate'
+      - name: 'email'
+        widget: 'string'
+        label: 'Email'
+        i18n: 'duplicate'
+      - name: 'avatar'
+        widget: 'image'
+        label: 'Avatar'
+        i18n: 'duplicate'
+      - name: 'bio'
+        widget: 'markdown'
+        label: 'Bio'
+        i18n: true

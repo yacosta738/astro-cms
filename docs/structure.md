@@ -1,6 +1,24 @@
 # Project Structure
 
 ```plaintext
+├───.devcontainer/
+│   ├───Dockerfile
+│   ├───devcontainer.json
+│   └───welcome-message.txt
+├───.github/
+│   ├───ISSUE_TEMPLATE/
+│   │   ├───bug_report.md
+│   │   └───feature_request.md
+│   ├───workflows/
+│   │   ├───cleanup.yml
+│   │   ├───codeql.yml
+│   │   ├───image-actions.yml
+│   │   ├───links.yml
+│   │   └───pagespeed-insights.yml
+│   ├───.DS_Store
+│   ├───FUNDING.yml
+│   ├───PULL_REQUEST_TEMPLATE.md
+│   └───dependabot.yml
 ├───.vscode/
 │   ├───extensions.json
 │   ├───launch.json
@@ -10,6 +28,8 @@
 │   ├───lighthouse.png
 │   └───structure.md
 ├───public/
+│   ├───admin/
+│   │   └───config.yml
 │   ├───android-icon.png
 │   ├───apple-touch-icon.png
 │   ├───favicon.png
@@ -46,6 +66,8 @@
 │   │   │   ├───ar/
 │   │   │   │   └───john-doe.json
 │   │   │   ├───en/
+│   │   │   │   └───john-doe.json
+│   │   │   ├───es/
 │   │   │   │   └───john-doe.json
 │   │   │   ├───ja/
 │   │   │   │   └───john-doe.json
@@ -146,6 +168,7 @@
 │   │   │   └───setup.mdx
 │   │   ├───.DS_Store
 │   │   ├───404.astro
+│   │   ├───admin.astro
 │   │   ├───index.astro
 │   │   └───robots.txt.ts
 │   ├───styles/
