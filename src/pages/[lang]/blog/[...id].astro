@@ -34,7 +34,6 @@ const author = await getEntry(post.data.author);
   <header>
     <h1>{title}</h1>
     <div class="meta">
-      {category && <span class="category">{category.data.title}</span>}
       {category ? (
         <span class="category">{category.data.title}</span>
       ) : (
