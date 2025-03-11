@@ -30,6 +30,7 @@
 ├───public/
 │   ├───admin/
 │   │   └───config.yml
+│   ├───.DS_Store
 │   ├───android-icon.png
 │   ├───apple-touch-icon.png
 │   ├───favicon.png
@@ -101,6 +102,7 @@
 │   │   │   ├───LocaleSuggest.astro
 │   │   │   ├───LocalesHomeList.astro
 │   │   │   └───NotTranslateCaution.astro
+│   │   ├───.DS_Store
 │   │   ├───Footer.astro
 │   │   ├───Header.astro
 │   │   ├───OptimizedPicture.astro
@@ -119,8 +121,6 @@
 │   │   │       └───john-doe.json
 │   │   ├───blog/
 │   │   │   ├───ar/
-│   │   │   │   ├───2025/
-│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -128,8 +128,6 @@
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
 │   │   │   ├───en/
-│   │   │   │   ├───2025/
-│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -137,8 +135,6 @@
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
 │   │   │   ├───es/
-│   │   │   │   ├───2025/
-│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -147,8 +143,6 @@
 │   │   │   │   │   └───...
 │   │   │   │   └───.DS_Store
 │   │   │   ├───ja/
-│   │   │   │   ├───2025/
-│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -156,8 +150,6 @@
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
 │   │   │   ├───zh-cn/
-│   │   │   │   ├───2025/
-│   │   │   │   │   └───...
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
@@ -253,6 +245,7 @@
 ├───.pre-commit-config.yaml
 ├───LICENSE
 ├───README.md
+├───SECURITY.md
 ├───astro.config.mjs
 ├───biome.json
 ├───package.json
