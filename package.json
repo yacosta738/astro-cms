@@ -21,15 +21,15 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
-		"@astrojs/mdx": "^4.0.8",
+		"@astrojs/mdx": "^4.2.2",
 		"@astrojs/rss": "^4.0.11",
-		"@astrojs/sitemap": "^3.2.1",
-		"astro": "^5.3.0"
+		"@astrojs/sitemap": "^3.3.0",
+		"astro": "^5.5.5"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"sharp": "^0.33.5",
-		"typescript": "^5.7.3"
+		"typescript": "^5.8.2"
 	},
 	"packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
 }
