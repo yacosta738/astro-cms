@@ -3,13 +3,7 @@ import { LOCALES, type Lang, localeParams, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 const t = useTranslations(Astro.currentLocale as Lang);
 
-const title = t({
-	ja: "ページが見つかりません",
-	en: "Page Not Found",
-	"zh-cn": "页面未找到",
-	ar: "الصفحة غير موجودة",
-	es: "Página No Encontrada",
-});
+const title = t("404.title");
 
 export const getStaticPaths = () => localeParams;
 ---
@@ -22,27 +16,11 @@ export const getStaticPaths = () => localeParams;
     </h1>
 
     <p>
-      {
-        t({
-          ja: "お探しのページは見つかりませんでした。トップに戻るか、他の言語でお試しください。",
-          en: "The page you are looking for could not be found. Please return to the top or try another language.",
-          "zh-cn": "您要查找的页面不存在。请返回顶部或尝试其他语言。",
-          ar: "الصفحة التي تبحث عنها غير موجودة. يرجى العودة إلى الأعلى أو تجربة لغة أخرى.",
-          es: "La página que estás buscando no se pudo encontrar. Por favor, vuelve al inicio o prueba en otro idioma.",
-        })
-      }
+      {t("404.message")}
     </p>
 
     <a href="/" class="gotop">
-      {
-        t({
-          ja: "トップページ",
-          en: "Top Page",
-          "zh-cn": "首页",
-          ar: "الصفحة الرئيسية",
-          es: "Página Principal",
-        })
-      }
+      {t("404.top.page")}
     </a>
 
     <section class="langList">

@@ -88,6 +88,15 @@ const isActive = (path: string) =>
 
       <li>
         <a
+          href={getRelativeLocaleUrl(locale, "/about")}
+          class={isActive("/about") ? "active" : null}
+        >
+          {t({ ja: "私たちについて", en: "About", es: "Sobre Nosotros", "zh-cn": "关于我们", ar: "عن الشركة" })}
+        </a>
+      </li>
+
+      <li>
+        <a
           href="https://github.com/yacosta738/astro-cms"
           target="_blank"
         >

@@ -191,6 +191,20 @@
 │   │   │       ├───ai.md
 │   │   │       └───test.md
 │   │   └───.DS_Store
+│   ├───i18n/
+│   │   ├───__tests__/
+│   │   │   └───i18n.test.ts
+│   │   ├───translations/
+│   │   │   ├───about.ts
+│   │   │   ├───common.ts
+│   │   │   ├───error.ts
+│   │   │   ├───index.ts
+│   │   │   └───theme.ts
+│   │   ├───i18n.ts
+│   │   ├───index.ts
+│   │   ├───locales.ts
+│   │   ├───types.ts
+│   │   └───ui.ts
 │   ├───layouts/
 │   │   ├───Article.astro
 │   │   └───Base.astro
@@ -200,6 +214,7 @@
 │   │   │   │   ├───[...id].astro
 │   │   │   │   └───index.astro
 │   │   │   ├───404.astro
+│   │   │   ├───about.astro
 │   │   │   ├───index.astro
 │   │   │   ├───monolingual.astro
 │   │   │   └───rss.xml.js
@@ -236,9 +251,7 @@
 │   ├───.DS_Store
 │   ├───consts.ts
 │   ├───content.config.ts
-│   ├───env.d.ts
-│   ├───i18n.ts
-│   └───locales.ts
+│   └───env.d.ts
 ├───.gitignore
 ├───.lycheeignore
 ├───.npmrc
@@ -252,6 +265,8 @@
 ├───pnpm-lock.yaml
 ├───pnpm-workspace.yaml
 ├───renovate.json
-└───tsconfig.json
+├───tsconfig.json
+├───vitest.config.ts
+└───vitest.setup.ts
 
 ```

@@ -19,9 +19,16 @@ repos:
         args: ['run', 'check']
         language: system
         pass_filenames: false
+      # Note: This hook modifies files, which pre-commit doesn't allow by default.
+      # If you encounter errors like "files were modified by this hook", you can:
+      # 1. Run the structure script manually: pnpm run structure
+      # 2. Add the modified files to your commit: git add docs/structure.md
+      # 3. Continue with the commit
       - id: run-structure-script
         name: run-structure-script
         entry: pnpm
         args: ['run', 'structure']
         language: system
         pass_filenames: false
+        always_run: true
+        fail_fast: false
