@@ -1,8 +1,12 @@
 ---
 import { LOCALES, type Lang, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
-const t = useTranslations(Astro.currentLocale as Lang);
-
+// Ensure type safety with fallback to default locale
+const currentLocale = Astro.currentLocale;
+const validLocale = Object.keys(LOCALES).includes(currentLocale)
+  ? currentLocale as Lang
+  : "en" as Lang;
+const t = useTranslations(validLocale);
 export const getStaticPaths = () =>
 	Object.keys(LOCALES).map((lang) => ({
 		params: { lang },
