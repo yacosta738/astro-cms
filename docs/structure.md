@@ -250,6 +250,7 @@
 ├───biome.json
 ├───package.json
 ├───pnpm-lock.yaml
+├───pnpm-workspace.yaml
 ├───renovate.json
 └───tsconfig.json
 

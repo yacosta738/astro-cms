@@ -1,7 +1,15 @@
 name: Lighthouse CI
+
 on:
   push:
+    branches:
+      - main
   pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   get-cloudflare-url:
@@ -9,14 +17,19 @@ jobs:
     outputs:
       preview_url: ${{ steps.extract-url.outputs.url }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Construct Cloudflare Preview URL
         id: extract-url
         run: |
           # Use GITHUB_HEAD_REF for pull requests; otherwise extract branch name from GITHUB_REF.
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
             BRANCH="$GITHUB_HEAD_REF"
-          else
+            echo "Event: Pull Request, Head Ref: $BRANCH"
+          else # For push events (e.g., to main)
             BRANCH="${GITHUB_REF#refs/heads/}"
+            echo "Event: Push, Branch from GITHUB_REF: $BRANCH"
           fi
           echo "Original branch name: $BRANCH"
 
@@ -25,7 +38,7 @@ jobs:
           SAFE_BRANCH=$(echo "$BRANCH" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
           echo "URL-ized branch name: $SAFE_BRANCH"
 
-          PREVIEW_URL="https://${SAFE_BRANCH}.codary-tech.pages.dev/en"
+          PREVIEW_URL="https://${SAFE_BRANCH}.astro-cms-dpv.pages.dev/en"
           echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
           echo "Preview URL: $PREVIEW_URL"
       - name: Display obtained URL
