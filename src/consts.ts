@@ -9,6 +9,10 @@ export const SITE_TITLE: string | Multilingual = "Astro CMS";
 export const SITE_DESCRIPTION: string | Multilingual = {
 	en: "Weekly tech news digest delivered every Friday, plus a comprehensive catalog of resources for developers and tech enthusiasts.",
 	es: "Resumen semanal de noticias tecnológicas enviado todos los viernes, además de un catálogo completo de recursos útiles para programadores y entusiastas de la tecnología.",
+	ja: "毎週金曜日に配信されるテクノロジーニュースダイジェストと、開発者やテクノロジー愛好家のための包括的なリソースカタログ。",
+	"zh-cn":
+		"每周五发布的技术新闻摘要，以及为开发人员和技术爱好者提供的全面资源目录。",
+	ar: "ملخص أخبار التكنولوجيا الأسبوعي الذي يتم تسليمه كل يوم جمعة، بالإضافة إلى كتالوج شامل من الموارد للمطورين وعشاق التكنولوجيا.",
 };
 
 export const X_ACCOUNT: string | Multilingual = "@yacosta738";
