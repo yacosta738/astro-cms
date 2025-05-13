@@ -38,7 +38,7 @@ jobs:
           SAFE_BRANCH=$(echo "$BRANCH" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
           echo "URL-ized branch name: $SAFE_BRANCH"
 
-          PREVIEW_URL="https://${SAFE_BRANCH}.codary-tech.pages.dev/en"
+          PREVIEW_URL="https://${SAFE_BRANCH}.astro-cms-dpv.pages.dev/en"
           echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
           echo "Preview URL: $PREVIEW_URL"
       - name: Display obtained URL
