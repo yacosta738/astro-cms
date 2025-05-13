@@ -1,7 +1,8 @@
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
-import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/locales";
+import { BASE_URL } from "./src/consts.ts";
+import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/i18n/locales";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
 	integrations: [
 		mdx(),
 		sitemap({
+			filter: (page) => page !== `${BASE_URL}/admin/`,
 			i18n: {
 				defaultLocale: DEFAULT_LOCALE_SETTING,
 				locales: Object.fromEntries(
