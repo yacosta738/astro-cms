@@ -6,7 +6,9 @@
 		"baseUrl": ".",
 		"strictNullChecks": true,
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["./src/*"],
+			"@i18n": ["./src/i18n/index.ts"],
+			"@components/*": ["./src/components/*"]
 		}
 	}
 }

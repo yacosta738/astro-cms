@@ -3,22 +3,26 @@
 
 import type { Multilingual } from "@/i18n";
 
-export const SITE_TITLE: string | Multilingual = "Astro i18n Starter";
+export const BRAND_NAME: string | Multilingual = "Astro CMS";
+export const SITE_TITLE: string | Multilingual = "Astro CMS";
 
 export const SITE_DESCRIPTION: string | Multilingual = {
-	en: "A starter template for Astro with i18n support.",
-	ja: "i18n 対応の Astro スターターテンプレート。",
-	"zh-cn": "具有 i18n 支持的 Astro 入门模板。",
-	ar: "قالب بداية لـ Astro مع دعم i18n.",
-	es: "Una plantilla inicial para Astro con soporte i18n.",
+	en: "Weekly tech news digest delivered every Friday, plus a comprehensive catalog of resources for developers and tech enthusiasts.",
+	es: "Resumen semanal de noticias tecnológicas enviado todos los viernes, además de un catálogo completo de recursos útiles para programadores y entusiastas de la tecnología.",
+	ja: "毎週金曜日に配信されるテクノロジーニュースダイジェストと、開発者やテクノロジー愛好家のための包括的なリソースカタログ。",
+	"zh-cn":
+		"每周五发布的技术新闻摘要，以及为开发人员和技术爱好者提供的全面资源目录。",
+	ar: "ملخص أخبار التكنولوجيا الأسبوعي الذي يتم تسليمه كل يوم جمعة، بالإضافة إلى كتالوج شامل من الموارد للمطورين وعشاق التكنولوجيا.",
 };
 
 export const X_ACCOUNT: string | Multilingual = "@yacosta738";
 
 export const NOT_TRANSLATED_CAUTION: string | Multilingual = {
 	en: "This page is not available in your language.",
-	ja: "このページはご利用の言語でご覧いただけません。",
-	"zh-cn": "此页面不支持您的语言。",
-	ar: "هذه الصفحة غير متوفرة بلغتك.",
 	es: "Esta página no está disponible en tu idioma.",
 };
+
+// Base URLs
+const BASE_URL_LOCAL = "http://localhost:4321";
+const BASE_URL_PROD = "https://astro-cms-dpv.pages.dev";
+export const BASE_URL = import.meta.env.DEV ? BASE_URL_LOCAL : BASE_URL_PROD;
