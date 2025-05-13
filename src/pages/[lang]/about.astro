@@ -1,0 +1,79 @@
+---
+  import { LOCALES, type Lang, useTranslations } from "@/i18n";
+  import Layout from "@/layouts/Base.astro";
+  // Ensure type safety with fallback to default locale
+  const currentLocale = Astro.currentLocale ?? "en";
+  const validLocale = Object.keys(LOCALES).includes(currentLocale)
+    ? currentLocale as Lang
+    : "en" as Lang;
+  const t = useTranslations(validLocale);
+  export const getStaticPaths = () =>
+   Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+   }));
+  ---
+
+  <Layout>
+    <h1>{t("title")}</h1>
+
+    <p>
+      <em>
+        {t("intro")}
+      </em>
+    </p>
+
+    <section>
+      <h2>{t("project.title")}</h2>
+      <p>{t("project.description")}</p>
+    </section>
+
+    <section>
+      <h2>{t("features.title")}</h2>
+      <ul>
+        <li>{t("features.i18n")}</li>
+        <li>{t("features.performance")}</li>
+        <li>{t("features.seo")}</li>
+        <li>{t("features.customizable")}</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>{t("team.title")}</h2>
+      <p>{t("team.description")}</p>
+    </section>
+
+    <section>
+      <h2>{t("contact.title")}</h2>
+      <p>{t("contact.description")}</p>
+    </section>
+  </Layout>
+
+  <style>
+    h1 {
+      color: var(--color-theme);
+      margin-block-end: var(--sp-m);
+    }
+
+    h2 {
+      color: var(--color-theme);
+      margin-block-start: var(--sp-l);
+      margin-block-end: var(--sp-s);
+    }
+
+    section {
+      margin-block-end: var(--sp-l);
+    }
+
+    ul {
+      margin-block-start: var(--sp-s);
+      list-style: disc;
+      padding-inline-start: 1em;
+    }
+
+    em {
+      display: block;
+      font-style: normal;
+      font-size: 1.3em;
+      margin-block-end: var(--sp-m);
+    }
+  </style>

@@ -139,9 +139,8 @@
 │   │   │   │   │   └───...
 │   │   │   │   ├───second-post/
 │   │   │   │   │   └───...
-│   │   │   │   ├───third-post/
-│   │   │   │   │   └───...
-│   │   │   │   └───.DS_Store
+│   │   │   │   └───third-post/
+│   │   │   │       └───...
 │   │   │   ├───ja/
 │   │   │   │   ├───first-post/
 │   │   │   │   │   └───...
@@ -149,14 +148,13 @@
 │   │   │   │   │   └───...
 │   │   │   │   └───third-post/
 │   │   │   │       └───...
-│   │   │   ├───zh-cn/
-│   │   │   │   ├───first-post/
-│   │   │   │   │   └───...
-│   │   │   │   ├───second-post/
-│   │   │   │   │   └───...
-│   │   │   │   └───third-post/
-│   │   │   │       └───...
-│   │   │   └───.DS_Store
+│   │   │   └───zh-cn/
+│   │   │       ├───first-post/
+│   │   │       │   └───...
+│   │   │       ├───second-post/
+│   │   │       │   └───...
+│   │   │       └───third-post/
+│   │   │           └───...
 │   │   ├───categories/
 │   │   │   ├───ar/
 │   │   │   │   ├───internet.md
@@ -174,23 +172,37 @@
 │   │   │   └───zh-cn/
 │   │   │       ├───internet.md
 │   │   │       └───test.md
-│   │   ├───tags/
-│   │   │   ├───ar/
-│   │   │   │   ├───ai.md
-│   │   │   │   └───test.md
-│   │   │   ├───en/
-│   │   │   │   ├───ai.md
-│   │   │   │   └───test.md
-│   │   │   ├───es/
-│   │   │   │   ├───ai.md
-│   │   │   │   └───test.md
-│   │   │   ├───ja/
-│   │   │   │   ├───ai.md
-│   │   │   │   └───test.md
-│   │   │   └───zh-cn/
-│   │   │       ├───ai.md
-│   │   │       └───test.md
-│   │   └───.DS_Store
+│   │   └───tags/
+│   │       ├───ar/
+│   │       │   ├───ai.md
+│   │       │   └───test.md
+│   │       ├───en/
+│   │       │   ├───ai.md
+│   │       │   └───test.md
+│   │       ├───es/
+│   │       │   ├───ai.md
+│   │       │   └───test.md
+│   │       ├───ja/
+│   │       │   ├───ai.md
+│   │       │   └───test.md
+│   │       └───zh-cn/
+│   │           ├───ai.md
+│   │           └───test.md
+│   ├───i18n/
+│   │   ├───__tests__/
+│   │   │   └───i18n.test.ts
+│   │   ├───translations/
+│   │   │   ├───about.ts
+│   │   │   ├───common.ts
+│   │   │   ├───error.ts
+│   │   │   ├───index.ts
+│   │   │   └───theme.ts
+│   │   ├───.DS_Store
+│   │   ├───i18n.ts
+│   │   ├───index.ts
+│   │   ├───locales.ts
+│   │   ├───types.ts
+│   │   └───ui.ts
 │   ├───layouts/
 │   │   ├───Article.astro
 │   │   └───Base.astro
@@ -200,6 +212,7 @@
 │   │   │   │   ├───[...id].astro
 │   │   │   │   └───index.astro
 │   │   │   ├───404.astro
+│   │   │   ├───about.astro
 │   │   │   ├───index.astro
 │   │   │   ├───monolingual.astro
 │   │   │   └───rss.xml.js
@@ -236,9 +249,7 @@
 │   ├───.DS_Store
 │   ├───consts.ts
 │   ├───content.config.ts
-│   ├───env.d.ts
-│   ├───i18n.ts
-│   └───locales.ts
+│   └───env.d.ts
 ├───.gitignore
 ├───.lycheeignore
 ├───.npmrc
@@ -252,6 +263,8 @@
 ├───pnpm-lock.yaml
 ├───pnpm-workspace.yaml
 ├───renovate.json
-└───tsconfig.json
+├───tsconfig.json
+├───vitest.config.ts
+└───vitest.setup.ts
 
 ```

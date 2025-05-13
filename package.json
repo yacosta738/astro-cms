@@ -17,6 +17,8 @@
 		"preview": "astro preview",
 		"check": "astro check && biome check --write .",
 		"astro": "astro",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"structure": "npx --yes tree-extended -max=5 -max-show-not-empty -gitignore > docs/structure.md && echo '```' >> docs/structure.md && cat docs/structure.md | sed -i '' -e '1i\\\n```plaintext' docs/structure.md && echo '# Project Structure\n' | cat - docs/structure.md > temp && mv temp docs/structure.md"
 	},
 	"dependencies": {
@@ -29,7 +31,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"sharp": "^0.34.1",
-		"typescript": "^5.8.3"
+		"typescript": "^5.8.3",
+		"vitest": "^1.6.1"
 	},
-	"packageManager": "pnpm@10.10.0"
+	"packageManager": "pnpm@10.11.0"
 }
