@@ -40,9 +40,11 @@ export const ui: UIMultilingual = Object.values(translationModules).reduce(
 );
 
 // Enhanced debug log to check what was loaded
-console.log(
-	"㊙︎ Loaded translations:",
-	Object.keys(ui)
-		.map((lang) => `${lang}: ${Object.keys(ui[lang as Lang]).length} keys`)
-		.join(", "),
-);
+if (process.env.NODE_ENV === "development") {
+	console.log(
+		"㊙︎ Loaded translations:",
+		Object.keys(ui)
+			.map((lang) => `${lang}: ${Object.keys(ui[lang as Lang]).length} keys`)
+			.join(", "),
+	);
+}
