@@ -117,44 +117,31 @@
 │   │   │   │   └───john-doe.json
 │   │   │   ├───ja/
 │   │   │   │   └───john-doe.json
-│   │   │   └───zh-cn/
-│   │   │       └───john-doe.json
+│   │   │   ├───zh-cn/
+│   │   │   │   └───john-doe.json
+│   │   │   └───.DS_Store
 │   │   ├───blog/
 │   │   │   ├───ar/
-│   │   │   │   ├───first-post/
+│   │   │   │   ├───2025/
 │   │   │   │   │   └───...
-│   │   │   │   ├───second-post/
-│   │   │   │   │   └───...
-│   │   │   │   └───third-post/
-│   │   │   │       └───...
+│   │   │   │   └───.DS_Store
 │   │   │   ├───en/
-│   │   │   │   ├───first-post/
+│   │   │   │   ├───2025/
 │   │   │   │   │   └───...
-│   │   │   │   ├───second-post/
-│   │   │   │   │   └───...
-│   │   │   │   └───third-post/
-│   │   │   │       └───...
+│   │   │   │   └───.DS_Store
 │   │   │   ├───es/
-│   │   │   │   ├───first-post/
+│   │   │   │   ├───2025/
 │   │   │   │   │   └───...
-│   │   │   │   ├───second-post/
-│   │   │   │   │   └───...
-│   │   │   │   └───third-post/
-│   │   │   │       └───...
+│   │   │   │   └───.DS_Store
 │   │   │   ├───ja/
-│   │   │   │   ├───first-post/
+│   │   │   │   ├───2025/
 │   │   │   │   │   └───...
-│   │   │   │   ├───second-post/
+│   │   │   │   └───.DS_Store
+│   │   │   ├───zh-cn/
+│   │   │   │   ├───2025/
 │   │   │   │   │   └───...
-│   │   │   │   └───third-post/
-│   │   │   │       └───...
-│   │   │   └───zh-cn/
-│   │   │       ├───first-post/
-│   │   │       │   └───...
-│   │   │       ├───second-post/
-│   │   │       │   └───...
-│   │   │       └───third-post/
-│   │   │           └───...
+│   │   │   │   └───.DS_Store
+│   │   │   └───.DS_Store
 │   │   ├───categories/
 │   │   │   ├───ar/
 │   │   │   │   ├───internet.md
@@ -169,25 +156,28 @@
 │   │   │   │   └───test.md
 │   │   │   ├───jp/
 │   │   │   │   └───internet.md
-│   │   │   └───zh-cn/
-│   │   │       ├───internet.md
-│   │   │       └───test.md
-│   │   └───tags/
-│   │       ├───ar/
-│   │       │   ├───ai.md
-│   │       │   └───test.md
-│   │       ├───en/
-│   │       │   ├───ai.md
-│   │       │   └───test.md
-│   │       ├───es/
-│   │       │   ├───ai.md
-│   │       │   └───test.md
-│   │       ├───ja/
-│   │       │   ├───ai.md
-│   │       │   └───test.md
-│   │       └───zh-cn/
-│   │           ├───ai.md
-│   │           └───test.md
+│   │   │   ├───zh-cn/
+│   │   │   │   ├───internet.md
+│   │   │   │   └───test.md
+│   │   │   └───.DS_Store
+│   │   ├───tags/
+│   │   │   ├───ar/
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
+│   │   │   ├───en/
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
+│   │   │   ├───es/
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
+│   │   │   ├───ja/
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
+│   │   │   ├───zh-cn/
+│   │   │   │   ├───ai.md
+│   │   │   │   └───test.md
+│   │   │   └───.DS_Store
+│   │   └───.DS_Store
 │   ├───i18n/
 │   │   ├───__tests__/
 │   │   │   └───i18n.test.ts
