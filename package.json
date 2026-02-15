@@ -22,15 +22,15 @@
 		"structure": "npx --yes tree-extended -max=5 -max-show-not-empty -gitignore > docs/structure.md && echo '```' >> docs/structure.md && cat docs/structure.md | sed -i '' -e '1i\\\n```plaintext' docs/structure.md && echo '# Project Structure\n' | cat - docs/structure.md > temp && mv temp docs/structure.md"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
-		"@astrojs/mdx": "^4.2.6",
-		"@astrojs/rss": "^4.0.11",
-		"@astrojs/sitemap": "^3.4.0",
-		"astro": "^5.7.12"
+		"@astrojs/check": "^0.9.6",
+		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/rss": "^4.0.15",
+		"@astrojs/sitemap": "^3.7.0",
+		"astro": "^5.17.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"sharp": "^0.34.1",
+		"@biomejs/biome": "2.3.15",
+		"sharp": "^0.34.5",
 		"typescript": "^5.8.3",
 		"vitest": "^4.0.0"
 	},
