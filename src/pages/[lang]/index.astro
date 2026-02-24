@@ -1,10 +1,11 @@
 ---
-import { LOCALES, type Lang, useTranslations } from "@/i18n";
+import { type Lang, LOCALES, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
+
 const t = useTranslations(Astro.currentLocale as Lang);
-import { getRelativeLocaleUrl } from "astro:i18n";
 
 import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import heroImageAr from "@/assets/ar/hero.svg";
 import heroImageEn from "@/assets/en/hero.svg";
 import heroImageEs from "@/assets/es/hero.svg";

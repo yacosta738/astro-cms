@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import { getCollection, getEntries, getEntry } from "astro:content";
 import PageHeadline from "@/components/PageHeadline.astro";
-import { LOCALES, type Lang, useTranslations } from "@/i18n";
+import { type Lang, LOCALES, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
 
 const locale = Astro.currentLocale as Lang;

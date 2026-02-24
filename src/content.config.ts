@@ -1,7 +1,7 @@
 import {
-	type SchemaContext,
 	defineCollection,
 	reference,
+	type SchemaContext,
 	z,
 } from "astro:content";
 import { glob } from "astro/loaders";

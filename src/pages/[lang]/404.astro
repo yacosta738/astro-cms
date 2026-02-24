@@ -1,6 +1,7 @@
 ---
-import { LOCALES, type Lang, localeParams, useTranslations } from "@/i18n";
+import { type Lang, LOCALES, localeParams, useTranslations } from "@/i18n";
 import Layout from "@/layouts/Base.astro";
+
 const t = useTranslations(Astro.currentLocale as Lang);
 
 const title = t("404.title");

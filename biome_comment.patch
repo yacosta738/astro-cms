@@ -1,0 +1,7 @@
+<<<<<<< SEARCH
+			"!**/public",
+			"!**/.vscode"
+=======
+			"!**/public", // Note: public/ is excluded as it only contains static assets
+			"!**/.vscode"
+>>>>>>> REPLACE
