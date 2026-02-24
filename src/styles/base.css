@@ -31,9 +31,9 @@
 		--sp-s: 8px;
 	}
 
-	--english-font: "Noto Sans", "Robot", "Avenir Next", "Avenir",
-		"Century Gothic", "SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont,
-		sans-serif;
+	--english-font:
+		"Noto Sans", "Robot", "Avenir Next", "Avenir", "Century Gothic",
+		"SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont, sans-serif;
 
 	color: var(--color-main);
 	background-color: var(--color-base);
@@ -48,8 +48,9 @@
 	line-height: 1.6;
 	font-weight: 500;
 	font-size: 18px;
-	font-family: "Noto Sans", system-ui, "SF Pro Text", -apple-system,
-		BlinkMacSystemFont, sans-serif;
+	font-family:
+		"Noto Sans", system-ui, "SF Pro Text", -apple-system, BlinkMacSystemFont,
+		sans-serif;
 	@media (width < 480px) {
 		font-size: 16px;
 	}

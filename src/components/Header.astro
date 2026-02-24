@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import LocaleSelect from "@/components/i18n/LocaleSelect.astro";
 import { type Lang, useTranslations } from "@/i18n";
+
 const t = useTranslations(Astro.currentLocale as Lang);
 
 import AstroImage from "@/assets/astro-logo.svg";
