@@ -32,7 +32,7 @@
 	}
 
 	--english-font:
-		"Noto Sans", "Robot", "Avenir Next", "Avenir", "Century Gothic",
+		"Noto Sans", "Roboto", "Avenir Next", "Avenir", "Century Gothic",
 		"SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont, sans-serif;
 
 	color: var(--color-main);

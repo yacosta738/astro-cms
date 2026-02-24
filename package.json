@@ -3,7 +3,6 @@
 	"description": "A starter for Astro with i18n support",
 	"version": "3.0.0",
 	"private": false,
-	"type": "module",
 	"license": "MIT",
 	"homepage": "https://astro-cms-dpv.pages.dev/",
 	"engines": {
