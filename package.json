@@ -35,5 +35,11 @@
 		"typescript": "^5.9.3",
 		"vitest": "^4.0.18"
 	},
-	"packageManager": "pnpm@10.29.3"
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"sharp"
+		]
+	},
+	"packageManager": "pnpm@9.15.4"
 }
