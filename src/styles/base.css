@@ -32,8 +32,8 @@
 	}
 
 	--english-font:
-		"Noto Sans", "Roboto", "Avenir Next", "Avenir", "Century Gothic",
-		"SF Pro Text", "Arial", -apple-system, BlinkMacSystemFont, sans-serif;
+		"Noto Sans", "Robot", "Avenir Next", "Avenir", "Century Gothic",
+		"SF Pro Text", "Arial", -apple-system, "BlinkMacSystemFont" /* ignore-keyword-case */, sans-serif;
 
 	color: var(--color-main);
 	background-color: var(--color-base);
@@ -49,7 +49,7 @@
 	font-weight: 500;
 	font-size: 18px;
 	font-family:
-		"Noto Sans", system-ui, "SF Pro Text", -apple-system, BlinkMacSystemFont,
+		"Noto Sans", system-ui, "SF Pro Text", -apple-system, "BlinkMacSystemFont" /* ignore-keyword-case */,
 		sans-serif;
 	@media (width < 480px) {
 		font-size: 16px;
