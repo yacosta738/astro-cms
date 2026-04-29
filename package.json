@@ -27,7 +27,7 @@
 		"@astrojs/mdx": "^4.3.13",
 		"@astrojs/rss": "^4.0.15",
 		"@astrojs/sitemap": "^3.7.0",
-		"astro": "^5.17.3"
+		"astro": "^6.0.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.4.4",
