@@ -17,6 +17,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Restore lychee cache
+        id: restore-cache
         uses: actions/cache@v5
         with:
           path: .lycheecache
@@ -25,13 +26,13 @@ jobs:
 
       - name: Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@v2.7.0
+        uses: lycheeverse/lychee-action@v2.3.0
         with:
-          args: "--cache --max-cache-age 1d ."
+          args: "--cache --max-cache-age 1d --retry --retry-delay 1s ."
           fail: true
 
       - name: Create Issue From File
-        if: env.lychee_exit_code != 0
+        if: env.lychee_exit_code != 0 && github.event_name == 'push'
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: Link Checker Report
