@@ -25,7 +25,7 @@ jobs:
 
       - name: Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@v2.7.0
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: "--root-dir ${{ github.workspace }} --config lychee.toml --cache --max-cache-age 1d --no-progress ."
           fail: false
