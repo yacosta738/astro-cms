@@ -1,0 +1,11 @@
+# Lychee link checker configuration
+max_concurrency = 10
+accept = [200, 201, 204, 301, 302, 307, 308, 429]
+timeout = 20
+max_retries = 3
+user_agent = "Mozilla/5.0 (compatible; lychee/0.18.1)"
+verbose = "warn"
+scheme = ["https", "http"]
+
+# Exclude feature.mdx (contains /monolingual/ placeholder links to nonexistent route)
+exclude = ["**/feature.mdx"]
